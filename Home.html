@@ -1,0 +1,1254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weston Pack 157 — Adventure begins here.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Bebas+Neue&family=Anton&family=Archivo+Black&family=Rye&family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Courier+Prime&family=Special+Elite&family=Lora:wght@400;600&family=Vollkorn:wght@400;600&family=Libre+Caslon+Text&family=Inter:wght@400;500;600&family=Caveat:wght@500;700&family=Kalam&family=Homemade+Apple&display=swap" rel="stylesheet" />
+  <style>/* Weston Pack 157 — Rugged outdoor adventure styles */
+
+:root {
+  --ink: #0e1a1c;            /* near-black charcoal */
+  --ink-2: #1a2b2e;
+  --forest: #1f3a2e;
+  --forest-deep: #132319;
+  --moss: #3d5642;
+  --stone: #6b7a72;
+  --stone-light: #8a968c;
+  --bone: #e8e2d3;           /* warm off-white */
+  --cream: #f0ead8;
+  --paper: #f5efde;
+  --rust: #c54a1f;           /* alpine flag rust */
+  --rust-deep: #9a3614;
+  --amber: #d08a2e;
+
+  --font-display: "Oswald", "Bebas Neue", "Helvetica Neue Condensed", Impact, sans-serif;
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-body: "Source Serif 4", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-script: "Caveat", cursive;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  line-height: 1.0;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--rust);
+}
+
+.script { font-family: var(--font-script); color: var(--rust); font-size: 1.2em; }
+
+a { color: var(--rust); text-decoration: none; }
+a:hover { color: var(--rust-deep); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 26px;
+  background: var(--rust);
+  color: var(--bone);
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+.btn:hover { background: var(--rust-deep); color: var(--bone); }
+.btn.ghost {
+  background: transparent;
+  color: var(--bone);
+  border: 1.5px solid var(--bone);
+}
+.btn.ghost:hover { background: var(--bone); color: var(--ink); }
+.btn.dark { background: var(--ink); color: var(--bone); }
+.btn.dark:hover { background: var(--forest); }
+.btn .arrow { font-size: 16px; letter-spacing: 0; }
+
+/* Nav */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  background: rgba(14, 26, 28, 0.92);
+  backdrop-filter: blur(8px);
+  color: var(--bone);
+  border-bottom: 1px solid rgba(232, 226, 211, 0.12);
+}
+.nav .brand {
+  display: flex; align-items: center; gap: 14px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  color: var(--bone);
+  text-transform: uppercase;
+}
+.nav .brand .mark {
+  width: 42px; height: 42px;
+  border: 1.5px solid var(--bone);
+  display: grid; place-items: center;
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--bone);
+  position: relative;
+}
+.nav .brand .mark::before, .nav .brand .mark::after {
+  content: ""; position: absolute; inset: 3px;
+  border: 1px solid rgba(232,226,211,0.4);
+}
+.nav .links {
+  display: flex; gap: 34px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.nav .links a { color: var(--bone); opacity: 0.75; padding-bottom: 4px; border-bottom: 1.5px solid transparent; }
+.nav .links a:hover, .nav .links a.active { opacity: 1; border-bottom-color: var(--rust); color: var(--bone); }
+
+/* Footer */
+.footer {
+  background: var(--ink);
+  color: var(--bone);
+  padding: 72px 48px 32px;
+  border-top: 4px solid var(--rust);
+  position: relative;
+}
+.footer::before {
+  content: "";
+  position: absolute; left: 0; right: 0; top: -4px; height: 4px;
+  background: var(--rust);
+}
+.footer .row {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+  max-width: 1400px; margin: 0 auto;
+}
+.footer h4 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+.footer p, .footer a { color: var(--bone); font-family: var(--font-body); font-size: 15px; }
+.footer a { display: block; margin-bottom: 10px; opacity: 0.75; }
+.footer a:hover { opacity: 1; }
+.footer .wordmark { font-family: var(--font-display); font-size: 32px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+.footer .fine {
+  max-width: 1400px; margin: 48px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(232,226,211,0.15);
+  display: flex; justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  opacity: 0.5;
+}
+
+/* Placeholder photo — landscape gradient */
+.landscape {
+  position: relative;
+  background: linear-gradient(180deg, #1a2b33 0%, #2d4538 50%, #1f3026 100%);
+  overflow: hidden;
+}
+.landscape::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(232,226,211,0.18), transparent 45%),
+    radial-gradient(ellipse at 75% 80%, rgba(197,74,31,0.14), transparent 45%);
+}
+.landscape::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800' preserveAspectRatio='none'><g fill='none' stroke='rgba(232,226,211,0.08)' stroke-width='1'><path d='M0,560 C200,500 400,540 600,480 C800,420 1000,460 1200,400'/><path d='M0,600 C200,550 400,590 600,530 C800,470 1000,510 1200,450'/><path d='M0,640 C200,600 400,640 600,580 C800,520 1000,560 1200,500'/><path d='M0,680 C200,650 400,690 600,630 C800,570 1000,610 1200,550'/><path d='M0,720 C200,700 400,740 600,680 C800,620 1000,660 1200,600'/><polyline points='0,540 120,400 240,500 360,340 480,460 600,300 720,420 840,280 960,400 1080,320 1200,440' stroke='rgba(232,226,211,0.18)' stroke-width='1.5'/></g></svg>");
+  background-size: cover;
+}
+
+/* Topo pattern overlay */
+.topo-bg {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'><g fill='none' stroke='rgba(14,26,28,0.06)' stroke-width='1'><path d='M-50,300 C100,200 300,400 450,250 S750,450 850,300'/><path d='M-50,350 C100,250 300,450 450,300 S750,500 850,350'/><path d='M-50,400 C100,300 300,500 450,350 S750,550 850,400'/><path d='M-50,250 C100,150 300,350 450,200 S750,400 850,250'/><path d='M-50,200 C100,100 300,300 450,150 S750,350 850,200'/></g></svg>");
+  background-size: 800px 800px;
+  pointer-events: none;
+}
+
+/* Tweaks panel */
+.tweaks {
+  position: fixed; right: 20px; bottom: 20px; width: 280px;
+  background: var(--ink);
+  color: var(--bone);
+  border: 1.5px solid var(--bone);
+  z-index: 100;
+  font-family: var(--font-mono);
+  display: none;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+.tweaks.open { display: block; }
+.tweaks h4 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 0.22em;
+  padding: 14px 16px;
+  border-bottom: 1.5px solid rgba(232,226,211,0.2);
+  background: var(--rust);
+  color: var(--bone);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.tweaks .close {
+  background: transparent;
+  border: 1px solid var(--bone);
+  color: var(--bone);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 4px 8px;
+  cursor: pointer;
+  letter-spacing: 0.15em;
+}
+.tweaks .body { padding: 16px; }
+.tweaks label {
+  display: block; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  margin: 0 0 8px; color: var(--rust);
+}
+.tweaks select {
+  width: 100%; padding: 10px 12px;
+  font-family: var(--font-mono); font-size: 12px;
+  background: var(--ink-2); color: var(--bone);
+  border: 1px solid var(--stone); cursor: pointer;
+}
+.tweaks .preview {
+  margin-top: 14px; padding: 12px;
+  border: 1px dashed rgba(232,226,211,0.3);
+}
+.tweaks .preview .pd { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1; }
+.tweaks .preview .pb { font-family: var(--font-body); font-size: 13px; margin-top: 6px; color: rgba(232,226,211,0.75); }
+
+.wrap { max-width: 1400px; margin: 0 auto; padding: 0 48px; }
+.mono { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; }
+
+@media (max-width: 900px) {
+  .nav { padding: 16px 24px; }
+  .nav .links { display: none; }
+  .wrap { padding: 0 24px; }
+  .footer .row { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer { padding: 48px 24px 24px; }
+}
+</style>
+  <style>
+    /* HERO — cinematic full-bleed landscape */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      color: var(--bone);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .hero .bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, #0f1f23 0%, #1a3328 40%, #0f1a1c 100%);
+    }
+    .hero .bg::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse at 40% 20%, rgba(232,226,211,0.22), transparent 45%),
+        radial-gradient(ellipse at 80% 85%, rgba(197,74,31,0.18), transparent 50%);
+    }
+    /* Mountain silhouettes */
+    .hero .bg svg.mountains {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      width: 100%;
+      height: 65%;
+      display: block;
+    }
+    .hero .bg .stars {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 10% 12%, rgba(232,226,211,0.7), transparent),
+        radial-gradient(1px 1px at 24% 6%, rgba(232,226,211,0.5), transparent),
+        radial-gradient(1.5px 1.5px at 38% 18%, rgba(232,226,211,0.8), transparent),
+        radial-gradient(1px 1px at 55% 8%, rgba(232,226,211,0.5), transparent),
+        radial-gradient(1px 1px at 70% 14%, rgba(232,226,211,0.7), transparent),
+        radial-gradient(1.5px 1.5px at 85% 5%, rgba(232,226,211,0.6), transparent),
+        radial-gradient(1px 1px at 92% 18%, rgba(232,226,211,0.5), transparent);
+    }
+    .hero .grain {
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.9  0 0 0 0 0.88  0 0 0 0 0.82  0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      opacity: 0.6;
+      mix-blend-mode: overlay;
+    }
+
+    .hero .chrome-top {
+      position: relative;
+      display: flex; justify-content: space-between;
+      padding: 24px 48px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(232,226,211,0.6);
+      z-index: 2;
+    }
+    .hero .chrome-top .coords span { margin-right: 20px; }
+
+    .hero .content {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 64px;
+      align-items: end;
+      padding: 48px 48px 80px;
+      max-width: 1500px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero h1 {
+      font-size: clamp(72px, 12vw, 200px);
+      line-height: 0.88;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--bone);
+      font-weight: 600;
+    }
+    .hero h1 .line-b {
+      display: block;
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--rust);
+      letter-spacing: -0.01em;
+      text-transform: none;
+      font-size: 0.75em;
+      line-height: 1.05;
+      margin-top: 8px;
+    }
+    .hero .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      border: 1.5px solid var(--bone);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      color: var(--bone);
+    }
+    .hero .tag .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--rust);
+      box-shadow: 0 0 0 3px rgba(197,74,31,0.25);
+    }
+
+    .hero .right {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      color: var(--bone);
+    }
+    .hero .right p.lede {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.45;
+      color: rgba(232,226,211,0.88);
+      max-width: 42ch;
+    }
+    .hero .ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* Coordinates footer strip */
+    .hero .chrome-bottom {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid rgba(232,226,211,0.2);
+      border-bottom: 1px solid rgba(232,226,211,0.2);
+    }
+    .hero .chrome-bottom .cell {
+      padding: 20px 28px;
+      border-right: 1px solid rgba(232,226,211,0.15);
+    }
+    .hero .chrome-bottom .cell:last-child { border-right: 0; }
+    .hero .chrome-bottom .k { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rust); margin-bottom: 8px; }
+    .hero .chrome-bottom .v { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--bone); }
+    .hero .chrome-bottom .s { font-size: 13px; color: rgba(232,226,211,0.7); margin-top: 2px; font-family: var(--font-body); letter-spacing: 0; text-transform: none; }
+
+    /* --- Mission intro band --- */
+    .mission {
+      background: var(--paper);
+      padding: 120px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .mission .wrap-in {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 96px;
+      align-items: start;
+      position: relative;
+    }
+    .mission h2 {
+      font-size: clamp(52px, 7vw, 108px);
+      line-height: 0.92;
+      color: var(--ink);
+    }
+    .mission h2 .i {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--rust);
+      font-weight: 400;
+      text-transform: none;
+    }
+    .mission .body p {
+      font-size: 20px;
+      line-height: 1.65;
+      margin: 0 0 20px;
+      max-width: 58ch;
+    }
+    .mission .body p:first-child::first-letter {
+      font-family: var(--font-display);
+      font-size: 76px;
+      float: left;
+      line-height: 0.88;
+      padding: 8px 14px 0 0;
+      color: var(--rust);
+    }
+    .mission .pull {
+      margin-top: 40px;
+      padding: 32px 0 0;
+      border-top: 2px solid var(--ink);
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 28px;
+      line-height: 1.3;
+      color: var(--forest-deep);
+      max-width: 54ch;
+    }
+    .mission .pull .attr { display: block; margin-top: 16px; font-family: var(--font-mono); font-style: normal; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--stone); }
+
+    /* --- What we do — grid of photos with captions --- */
+    .gallery {
+      background: var(--ink);
+      color: var(--bone);
+      padding: 120px 48px;
+      position: relative;
+    }
+    .gallery .head {
+      max-width: 1400px;
+      margin: 0 auto 72px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: end;
+    }
+    .gallery h2 {
+      font-size: clamp(48px, 6vw, 92px);
+      line-height: 0.95;
+      color: var(--bone);
+    }
+    .gallery h2 .i { font-family: var(--font-serif); font-style: italic; color: var(--rust); font-weight: 400; text-transform: none; }
+    .gallery .head p {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 22px;
+      color: rgba(232,226,211,0.75);
+      max-width: 46ch;
+      line-height: 1.4;
+    }
+    .gallery .grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 320px 320px;
+      gap: 16px;
+    }
+    .gallery .tile {
+      position: relative;
+      overflow: hidden;
+      color: var(--bone);
+    }
+    .gallery .tile.large { grid-row: span 2; }
+    .gallery .tile .ph-label {
+      position: absolute; top: 16px; right: 16px;
+      background: rgba(14,26,28,0.8);
+      border: 1px solid rgba(232,226,211,0.3);
+      padding: 5px 9px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--bone);
+    }
+    .gallery .tile .info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 24px 24px 20px;
+      background: linear-gradient(180deg, transparent 0%, rgba(14,26,28,0.85) 60%, rgba(14,26,28,0.95) 100%);
+    }
+    .gallery .tile .num {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      color: var(--rust);
+      margin-bottom: 8px;
+    }
+    .gallery .tile h3 {
+      font-size: 26px;
+      line-height: 1.05;
+      margin-bottom: 6px;
+    }
+    .gallery .tile.large h3 { font-size: 36px; }
+    .gallery .tile p {
+      font-size: 13px;
+      color: rgba(232,226,211,0.8);
+      line-height: 1.5;
+      margin: 0;
+      max-width: 38ch;
+    }
+
+    /* --- Meeting rhythm --- */
+    .rhythm {
+      background: var(--paper);
+      padding: 120px 48px;
+      border-bottom: 1px solid rgba(14,26,28,0.1);
+    }
+    .rhythm .wrap-in { max-width: 1400px; margin: 0 auto; }
+    .rhythm .head { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end; margin-bottom: 64px; }
+    .rhythm h2 { font-size: clamp(48px, 6vw, 92px); line-height: 0.95; }
+    .rhythm h2 .i { font-family: var(--font-serif); font-style: italic; color: var(--rust); font-weight: 400; text-transform: none; }
+    .rhythm .head p { font-family: var(--font-serif); font-style: italic; font-size: 20px; max-width: 52ch; margin: 0; line-height: 1.4; color: var(--ink-2); }
+    .rhythm .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .rhythm .card {
+      background: var(--bone);
+      border: 1px solid rgba(14,26,28,0.12);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .rhythm .card .topo {
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><g fill='none' stroke='rgba(14,26,28,0.05)' stroke-width='1'><path d='M0,200 C50,150 150,250 200,150 S350,250 400,200'/><path d='M0,240 C50,190 150,290 200,190 S350,290 400,240'/><path d='M0,280 C50,230 150,330 200,230 S350,330 400,280'/><path d='M0,160 C50,110 150,210 200,110 S350,210 400,160'/><path d='M0,120 C50,70 150,170 200,70 S350,170 400,120'/></g></svg>");
+      pointer-events: none;
+    }
+    .rhythm .card > * { position: relative; z-index: 1; }
+    .rhythm .card .when { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--rust); margin-bottom: 14px; }
+    .rhythm .card h3 { font-size: 44px; line-height: 0.95; margin-bottom: 18px; }
+    .rhythm .card p { font-size: 16px; line-height: 1.6; margin: 0 0 28px; }
+    .rhythm .card .details { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; padding-top: 24px; border-top: 1.5px solid var(--ink); }
+    .rhythm .card .k { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--stone); margin-bottom: 4px; }
+    .rhythm .card .v { font-family: var(--font-display); font-size: 17px; letter-spacing: 0.04em; text-transform: uppercase; }
+
+    /* --- Trail of the year --- */
+    .trail {
+      background: linear-gradient(180deg, var(--forest-deep) 0%, var(--ink) 100%);
+      color: var(--bone);
+      padding: 120px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .trail .topo-bg { opacity: 1; }
+    .trail .topo-bg { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'><g fill='none' stroke='rgba(232,226,211,0.05)' stroke-width='1'><path d='M-50,300 C100,200 300,400 450,250 S750,450 850,300'/><path d='M-50,350 C100,250 300,450 450,300 S750,500 850,350'/><path d='M-50,400 C100,300 300,500 450,350 S750,550 850,400'/><path d='M-50,250 C100,150 300,350 450,200 S750,400 850,250'/><path d='M-50,200 C100,100 300,300 450,150 S750,350 850,200'/></g></svg>"); }
+    .trail .wrap-in { max-width: 1400px; margin: 0 auto; position: relative; }
+    .trail .head { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end; margin-bottom: 80px; }
+    .trail h2 { font-size: clamp(48px, 6vw, 92px); line-height: 0.95; color: var(--bone); }
+    .trail h2 .i { font-family: var(--font-serif); font-style: italic; color: var(--rust); font-weight: 400; text-transform: none; }
+    .trail .head p { font-family: var(--font-serif); font-style: italic; font-size: 20px; max-width: 48ch; margin: 0; line-height: 1.4; color: rgba(232,226,211,0.8); }
+
+    .stops {
+      position: relative;
+      padding: 40px 0 20px;
+    }
+    .stops svg.trail-path {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+    }
+    .stops .list {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .stops .stop {
+      position: relative;
+      padding-top: 48px;
+    }
+    .stops .stop:nth-child(even) { transform: translateY(36px); }
+    .stops .stop .pin {
+      position: absolute;
+      top: 0; left: 12px;
+      width: 36px; height: 36px;
+      background: var(--rust);
+      border: 2px solid var(--bone);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      display: grid; place-items: center;
+    }
+    .stops .stop .pin span {
+      transform: rotate(45deg);
+      font-family: var(--font-display);
+      color: var(--bone);
+      font-size: 14px;
+    }
+    .stops .stop .month { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--rust); margin-bottom: 6px; }
+    .stops .stop h3 { font-size: 22px; line-height: 1.05; color: var(--bone); margin-bottom: 8px; }
+    .stops .stop p { font-size: 13px; line-height: 1.5; color: rgba(232,226,211,0.7); margin: 0; }
+
+    /* --- Testimonials --- */
+    .voices {
+      background: var(--paper);
+      padding: 120px 48px;
+    }
+    .voices .wrap-in { max-width: 1400px; margin: 0 auto; }
+    .voices .head { text-align: center; margin-bottom: 80px; }
+    .voices h2 { font-size: clamp(48px, 6vw, 92px); line-height: 0.95; }
+    .voices h2 .i { font-family: var(--font-serif); font-style: italic; color: var(--rust); font-weight: 400; text-transform: none; }
+    .voices .sub { font-family: var(--font-script); font-size: 34px; color: var(--rust); margin-top: 8px; }
+    .voices .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .voices .v {
+      background: var(--bone);
+      border: 1px solid rgba(14,26,28,0.12);
+      padding: 36px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .voices .v .mark {
+      font-family: var(--font-serif);
+      font-size: 90px;
+      line-height: 0.4;
+      color: var(--rust);
+      margin-bottom: 10px;
+    }
+    .voices .v .quote {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      line-height: 1.4;
+      font-style: italic;
+      margin: 0 0 28px;
+      flex: 1;
+    }
+    .voices .v .attr {
+      padding-top: 24px;
+      border-top: 1.5px solid var(--ink);
+      display: flex; align-items: center; gap: 14px;
+    }
+    .voices .v .avatar {
+      width: 44px; height: 44px;
+      border: 1.5px solid var(--ink);
+      background: var(--rust);
+      color: var(--bone);
+      display: grid; place-items: center;
+      font-family: var(--font-display);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+    }
+    .voices .v .name { font-family: var(--font-display); font-size: 16px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .voices .v .role { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--stone); margin-top: 2px; }
+
+    /* --- FAQ --- */
+    .faq {
+      background: var(--ink);
+      color: var(--bone);
+      padding: 120px 48px;
+    }
+    .faq .wrap-in { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 72px; }
+    .faq h2 { color: var(--bone); font-size: clamp(42px, 5vw, 76px); line-height: 0.95; }
+    .faq h2 .i { font-family: var(--font-serif); font-style: italic; color: var(--rust); font-weight: 400; text-transform: none; }
+    .faq .sidebar p { font-size: 17px; line-height: 1.65; color: rgba(232,226,211,0.75); margin: 24px 0 0; max-width: 40ch; }
+    .faq .sidebar .btn { margin-top: 32px; }
+    .faq .items { border-top: 1.5px solid rgba(232,226,211,0.2); }
+    .faq details { border-bottom: 1.5px solid rgba(232,226,211,0.2); padding: 24px 0; }
+    .faq summary {
+      list-style: none; cursor: pointer;
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: flex; justify-content: space-between; gap: 16px; align-items: center;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: "+";
+      color: var(--rust);
+      font-size: 28px;
+      font-family: var(--font-display);
+      flex: none;
+    }
+    .faq details[open] summary::after { content: "–"; }
+    .faq details p { margin: 16px 0 0; font-size: 16px; line-height: 1.6; color: rgba(232,226,211,0.8); max-width: 62ch; }
+
+    /* --- Final CTA — full bleed photo --- */
+    .finalcta {
+      position: relative;
+      min-height: 640px;
+      color: var(--bone);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 48px;
+    }
+    .finalcta .bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, #0f1f23 0%, #1a3328 40%, #0f1a1c 100%);
+    }
+    .finalcta .bg::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse at 50% 100%, rgba(197,74,31,0.3), transparent 55%);
+    }
+    .finalcta .bg svg { position: absolute; bottom: 0; left: 0; right: 0; width: 100%; height: 60%; }
+    .finalcta .content { position: relative; z-index: 2; max-width: 980px; }
+    .finalcta h2 {
+      font-size: clamp(60px, 9vw, 150px);
+      line-height: 0.88;
+      color: var(--bone);
+    }
+    .finalcta h2 .i { font-family: var(--font-serif); font-style: italic; color: var(--rust); font-weight: 400; text-transform: none; }
+    .finalcta p { font-family: var(--font-serif); font-style: italic; font-size: 22px; color: rgba(232,226,211,0.85); margin: 28px auto 40px; max-width: 54ch; line-height: 1.4; }
+    .finalcta .ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 1100px) {
+      .hero .content { grid-template-columns: 1fr; padding: 32px 24px 56px; }
+      .hero .chrome-top { padding: 20px 24px; }
+      .hero .chrome-bottom { grid-template-columns: 1fr 1fr; }
+      .hero .chrome-bottom .cell { border-right: 0; border-bottom: 1px solid rgba(232,226,211,0.15); }
+      .mission .wrap-in, .gallery .head, .rhythm .head, .trail .head, .faq .wrap-in { grid-template-columns: 1fr; gap: 32px; }
+      .gallery .grid { grid-template-columns: 1fr; grid-template-rows: repeat(5, 260px); }
+      .gallery .tile.large { grid-row: span 1; }
+      .rhythm .cards, .voices .cards { grid-template-columns: 1fr; }
+      .stops .list { grid-template-columns: repeat(2, 1fr); }
+      .stops .stop:nth-child(even) { transform: none; }
+    }
+  </style>
+</head>
+<body data-screen-label="Homepage">
+
+<script>
+  const PACK_TWEAKS = /*EDITMODE-BEGIN*/{
+    "fontPairing": "expedition"
+  }/*EDITMODE-END*/;
+</script>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="bg">
+    <div class="stars"></div>
+    <svg class="mountains" viewBox="0 0 1400 600" preserveAspectRatio="none">
+      <!-- Back range -->
+      <polygon points="0,380 140,220 260,320 380,180 520,300 640,200 780,280 920,180 1080,260 1200,200 1400,320 1400,600 0,600" fill="#1a2b2e" opacity="0.85"/>
+      <!-- Mid range -->
+      <polygon points="0,460 120,320 220,400 360,280 480,380 620,300 760,380 880,300 1020,380 1180,300 1400,400 1400,600 0,600" fill="#0f1f20" opacity="0.9"/>
+      <!-- Front range -->
+      <polygon points="0,540 100,440 220,490 340,420 460,480 580,430 700,490 840,420 960,480 1080,430 1240,490 1400,460 1400,600 0,600" fill="#0a1516"/>
+      <!-- Trees silhouette on front range -->
+      <g fill="#0a1516">
+        <polygon points="200,490 208,460 216,490"/>
+        <polygon points="230,485 238,455 246,485"/>
+        <polygon points="420,480 428,450 436,480"/>
+        <polygon points="700,490 708,460 716,490"/>
+        <polygon points="1040,480 1048,448 1056,480"/>
+      </g>
+    </svg>
+    <div class="grain"></div>
+  </div>
+
+  <div class="chrome-top">
+    <span>N 42°22′ · W 71°18′</span>
+    <span>Weston Pack 157 · Field Dispatch</span>
+    <span>Est. 1999</span>
+  </div>
+
+  <!-- Nav inside hero -->
+  <nav style="position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; padding: 10px 48px 40px; color: var(--bone);">
+    <a href="Home.html" style="display: flex; align-items: center; gap: 14px; color: var(--bone); text-decoration: none; font-family: var(--font-display); font-size: 22px; letter-spacing: 0.08em; text-transform: uppercase;">
+      <span style="width: 44px; height: 44px; border: 1.5px solid var(--bone); display: grid; place-items: center; font-family: var(--font-display); font-size: 14px;">157</span>
+      <span>Weston Pack 157</span>
+    </a>
+    <div style="display: flex; gap: 36px; font-family: var(--font-display); font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase;">
+      <a href="Home.html" style="color: var(--bone); opacity: 1; border-bottom: 1.5px solid var(--rust); padding-bottom: 4px;">Home</a>
+      <a href="#about" style="color: var(--bone); opacity: 0.75;">About</a>
+      <a href="Events.html" style="color: var(--bone); opacity: 0.75;">Events</a>
+      <a href="#faq" style="color: var(--bone); opacity: 0.75;">FAQ</a>
+      <a href="Join.html" style="color: var(--bone); opacity: 0.75;">Join</a>
+    </div>
+    <a href="Join.html" class="btn" style="padding: 12px 20px; font-size: 12px;">Join the Pack <span class="arrow">→</span></a>
+  </nav>
+
+  <div class="content">
+    <div>
+      <div class="tag">
+        <span class="dot"></span>
+        <span>Now Enrolling · Grades K – 5 · Weston, MA</span>
+      </div>
+      <h1>
+        Adventure<br/>
+        starts at the<br/>
+        <span class="line-b">edge of the woods.</span>
+      </h1>
+    </div>
+    <div class="right">
+      <p class="lede">A Weston Cub Scout pack for Kindergarten through 5th grade. Real skills, real trails, and a great group of kids who are growing up outside together — not against each other.</p>
+      <div class="ctas">
+        <a href="Join.html" class="btn">Join the Pack <span class="arrow">→</span></a>
+        <a href="Events.html" class="btn ghost">See Adventures</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="chrome-bottom">
+    <div class="cell">
+      <div class="k">Grades</div>
+      <div class="v">K – 5</div>
+      <div class="s">Kindergarten through 5th</div>
+    </div>
+    <div class="cell">
+      <div class="k">Meets</div>
+      <div class="v">Wed · 6 – 7:15</div>
+      <div class="s">Twice monthly</div>
+    </div>
+    <div class="cell">
+      <div class="k">Basecamp</div>
+      <div class="v">Weston Scout House</div>
+      <div class="s">Weston, Massachusetts</div>
+    </div>
+    <div class="cell">
+      <div class="k">Est.</div>
+      <div class="v">1999</div>
+      <div class="s">26 years on the trail</div>
+    </div>
+  </div>
+</header>
+
+<!-- Mission -->
+<section class="mission" id="about">
+  <div class="wrap-in">
+    <div>
+      <span class="kicker">The Pack 157 Way</span>
+      <h2 style="margin-top: 16px;">No scoreboard.<br/>No rankings.<br/><span class="i">Just the trail.</span></h2>
+    </div>
+    <div class="body">
+      <p>Unlike sports or academic competitions — where one winner means everyone else loses — Pack 157 is built on a different idea: every kid can succeed here. There's no scoreboard. There are no rankings. Just a great group of kids growing up together, one adventure at a time.</p>
+      <p>Every badge earned, every project completed, every campfire shared makes the whole pack stronger. One Scout's win is everyone's win. Kids learn to bring what they're good at — creativity, leadership, problem-solving — and contribute it to a team, rather than compete against each other to stand out.</p>
+      <p>The skills built here are the ones that actually matter in the real world, where most of what we accomplish, we accomplish together: cooperation, empathy, shared purpose.</p>
+      <div class="pull">
+        "One Scout's win is everyone's win."
+        <span class="attr">— The Pack 157 Way</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery / What we do -->
+<section class="gallery">
+  <div class="head">
+    <h2>What we <span class="i">actually</span> do.</h2>
+    <p>A year of real adventures — not a checklist. Twelve pack-wide outings, monthly den meetings, and a steady drumbeat of time outside, together.</p>
+  </div>
+  <div class="grid">
+    <div class="tile large landscape">
+      <span class="ph-label">PHOTO · Pack campout</span>
+      <div class="info">
+        <div class="num">— 01 · FLAGSHIP</div>
+        <h3>Overnight Campouts</h3>
+        <p>Fall and spring pack campouts at New England campsites. Tents, firepits, constellations, and the best night of the year.</p>
+      </div>
+    </div>
+    <div class="tile landscape" style="background: linear-gradient(180deg, #2d4230 0%, #1a2b1e 100%);">
+      <span class="ph-label">PHOTO · Day hike</span>
+      <div class="info">
+        <div class="num">— 02 · MONTHLY</div>
+        <h3>Trail Hikes</h3>
+        <p>Family hikes on Weston trails and beyond.</p>
+      </div>
+    </div>
+    <div class="tile landscape" style="background: linear-gradient(180deg, #3a3020 0%, #1f1810 100%);">
+      <span class="ph-label">PHOTO · Pinewood</span>
+      <div class="info">
+        <div class="num">— 03 · FEBRUARY</div>
+        <h3>Pinewood Derby</h3>
+        <p>Weeks of garage time. One loud afternoon.</p>
+      </div>
+    </div>
+    <div class="tile landscape" style="background: linear-gradient(180deg, #2b3a44 0%, #141e24 100%);">
+      <span class="ph-label">PHOTO · Rocket day</span>
+      <div class="info">
+        <div class="num">— 04 · APRIL</div>
+        <h3>Rocket Launch</h3>
+        <p>Build, paint, launch, cheer.</p>
+      </div>
+    </div>
+    <div class="tile landscape" style="background: linear-gradient(180deg, #3d2420 0%, #1e110f 100%);">
+      <span class="ph-label">PHOTO · Service day</span>
+      <div class="info">
+        <div class="num">— 05 · YEAR-ROUND</div>
+        <h3>Service &amp; Community</h3>
+        <p>Flag ceremonies, cleanups, food drives.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Rhythm -->
+<section class="rhythm">
+  <div class="wrap-in">
+    <div class="head">
+      <h2>A rhythm that<br/>fits your <span class="i">family.</span></h2>
+      <p>Two meetings a month. A weekend adventure. Predictable enough for working parents, flexible enough for real life.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="topo"></div>
+        <div class="when">— Monthly · Whole Pack</div>
+        <h3>Pack Meetings</h3>
+        <p>The full pack, all grades together. Skits, awards, announcements, visiting guests — and usually some controlled chaos. The best night of the month.</p>
+        <div class="details">
+          <div><div class="k">Night</div><div class="v">Wednesday</div></div>
+          <div><div class="k">Time</div><div class="v">6:00 – 7:15 PM</div></div>
+          <div><div class="k">Where</div><div class="v">Scout House</div></div>
+          <div><div class="k">Who</div><div class="v">Every Scout</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="topo"></div>
+        <div class="when">— Monthly · By Grade</div>
+        <h3>Den Meetings</h3>
+        <p>Smaller groups by grade. Rank-specific adventures — building, cooking, experimenting, and earning the badges that mean the most.</p>
+        <div class="details">
+          <div><div class="k">Frequency</div><div class="v">Monthly</div></div>
+          <div><div class="k">Group</div><div class="v">By grade</div></div>
+          <div><div class="k">Where</div><div class="v">Scout House</div></div>
+          <div><div class="k">Who</div><div class="v">Your den</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trail of the year -->
+<section class="trail">
+  <div class="topo-bg"></div>
+  <div class="wrap-in">
+    <div class="head">
+      <div>
+        <span class="kicker">— The Year Ahead</span>
+        <h2 style="margin-top: 12px;">Six stops<br/>on the <span class="i">Pack 157 trail.</span></h2>
+      </div>
+      <p>A sampler of what a year looks like — the actual stuff your Scout gets to do. Ten or twelve pack-wide adventures, plus den meetings in between.</p>
+    </div>
+    <div class="stops">
+      <svg class="trail-path" viewBox="0 0 1400 280" preserveAspectRatio="none">
+        <path d="M 80 80 Q 240 40, 320 120 T 540 100 Q 660 170, 780 90 T 1000 140 Q 1140 80, 1320 120"
+              fill="none" stroke="rgba(197,74,31,0.6)" stroke-width="2" stroke-dasharray="4 8"/>
+      </svg>
+      <div class="list">
+        <div class="stop">
+          <div class="pin"><span>1</span></div>
+          <div class="month">September</div>
+          <h3>Kickoff Picnic</h3>
+          <p>New families meet, returning Scouts swap summer stories.</p>
+        </div>
+        <div class="stop">
+          <div class="pin"><span>2</span></div>
+          <div class="month">October</div>
+          <h3>Fall Campout</h3>
+          <p>First overnight. Short hike, big campfire, October sky.</p>
+        </div>
+        <div class="stop">
+          <div class="pin"><span>3</span></div>
+          <div class="month">December</div>
+          <h3>Holiday Service</h3>
+          <p>Food drive or neighbor-helping project, chosen together.</p>
+        </div>
+        <div class="stop">
+          <div class="pin"><span>4</span></div>
+          <div class="month">February</div>
+          <h3>Pinewood Derby</h3>
+          <p>Weeks of garage-time. One afternoon of cheering.</p>
+        </div>
+        <div class="stop">
+          <div class="pin"><span>5</span></div>
+          <div class="month">April</div>
+          <h3>Rocket Day</h3>
+          <p>A field, a lot of fins, and the best surprise on a kid's face.</p>
+        </div>
+        <div class="stop">
+          <div class="pin"><span>6</span></div>
+          <div class="month">June</div>
+          <h3>Crossover</h3>
+          <p>Scouts move up a rank. Summer starts at the pavilion.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Voices -->
+<section class="voices">
+  <div class="wrap-in">
+    <div class="head">
+      <span class="kicker">From the Car Line</span>
+      <h2 style="margin-top: 12px;">What Weston parents <span class="i">actually say.</span></h2>
+      <div class="sub">No marketing copy. Real families.</div>
+    </div>
+    <div class="cards">
+      <div class="v">
+        <div class="mark">"</div>
+        <p class="quote">We joined thinking it was a nice activity. A year in, it's the most important thing on our calendar. Our son walks taller.</p>
+        <div class="attr">
+          <div class="avatar">MR</div>
+          <div><div class="name">Maya R.</div><div class="role">Wolves Den Parent</div></div>
+        </div>
+      </div>
+      <div class="v">
+        <div class="mark">"</div>
+        <p class="quote">My kid is the quiet, bookish one. This is the first group where he's made real friends, and the leaders actually get him.</p>
+        <div class="attr">
+          <div class="avatar">DC</div>
+          <div><div class="name">Dan C.</div><div class="role">Bears Den Parent</div></div>
+        </div>
+      </div>
+      <div class="v">
+        <div class="mark">"</div>
+        <p class="quote">Two meetings a month and a weekend adventure — manageable for working parents, meaningful for the kids. That's the whole pitch.</p>
+        <div class="attr">
+          <div class="avatar">JP</div>
+          <div><div class="name">Jen P.</div><div class="role">Tigers Den Parent</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap-in">
+    <div class="sidebar">
+      <span class="kicker">For New Families</span>
+      <h2 style="margin-top: 12px;">Questions parents <span class="i">ask first.</span></h2>
+      <p>If your question's not here, we'd rather talk it through over coffee. Reach out — a real human will write back.</p>
+      <a href="Join.html" class="btn">Ask a Question <span class="arrow">→</span></a>
+    </div>
+    <div class="items">
+      <details open>
+        <summary>What does it actually cost?</summary>
+        <p>Annual dues cover national registration, our supplies, and most in-town activities. Overnight campouts and summer camp are priced separately and kept affordable. Scholarships are available, no questions asked — email us and we'll handle it quietly.</p>
+      </details>
+      <details>
+        <summary>How much time will this take?</summary>
+        <p>Two meetings a month — one Pack Meeting (all grades) on a Wednesday and one Den Meeting (your grade) monthly — plus roughly one weekend adventure per month. Attend what works for your family.</p>
+      </details>
+      <details>
+        <summary>Do I need to volunteer?</summary>
+        <p>We love parent involvement but nothing is required. Dens run best when one or two parents help out, and we'll always ask before assuming.</p>
+      </details>
+      <details>
+        <summary>My kid has never camped. Problem?</summary>
+        <p>Not at all — half of our Scouts start the same way. We ease in with short, in-town campouts and a lot of experienced families around to help first-timers.</p>
+      </details>
+      <details>
+        <summary>What grade can my child join?</summary>
+        <p>Kindergarten through 5th grade, any time during the school year. Mid-year joiners catch up quickly.</p>
+      </details>
+      <details>
+        <summary>Is Pack 157 open to all kids?</summary>
+        <p>Yes. All backgrounds, all family shapes, all abilities. Every kid can succeed here — and we mean it.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="finalcta">
+  <div class="bg">
+    <svg viewBox="0 0 1400 500" preserveAspectRatio="none">
+      <polygon points="0,300 140,180 280,260 420,160 560,240 700,160 840,240 980,160 1120,240 1260,180 1400,260 1400,500 0,500" fill="#1a2b2e" opacity="0.85"/>
+      <polygon points="0,380 120,260 240,330 380,230 520,320 660,240 800,320 940,240 1080,320 1220,240 1400,340 1400,500 0,500" fill="#0f1f20"/>
+      <polygon points="0,440 100,360 220,420 340,340 460,410 580,350 700,420 840,350 960,420 1080,360 1240,420 1400,380 1400,500 0,500" fill="#0a1516"/>
+    </svg>
+  </div>
+  <div class="content">
+    <span class="kicker">— Ready when you are</span>
+    <h2 style="margin-top: 24px;">Come <span class="i">meet</span> the pack.</h2>
+    <p>The easiest way to know if Pack 157 is right for your kid is to show up to a meeting. No commitment, no sign-up, no paperwork. Bring your Scout, watch a night happen, ask us anything.</p>
+    <div class="ctas">
+      <a href="Join.html" class="btn">Join the Pack <span class="arrow">→</span></a>
+      <a href="Events.html" class="btn ghost">See Next Meeting</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="row">
+    <div>
+      <div class="wordmark">Weston Pack 157</div>
+      <p style="max-width: 36ch;">A local Cub Scout pack for Kindergarten through 5th grade, based at the Weston Scout House in Weston, Massachusetts.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <a href="Home.html">Home</a>
+      <a href="#about">About</a>
+      <a href="Events.html">Events</a>
+      <a href="Join.html">Join</a>
+    </div>
+    <div>
+      <h4>Visit</h4>
+      <a href="#">Weston Scout House</a>
+      <a href="#">Weston, Massachusetts</a>
+      <a href="#">Directions →</a>
+    </div>
+    <div>
+      <h4>Stay in Touch</h4>
+      <a href="Join.html">Contact us</a>
+      <a href="#">Newsletter</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+  <div class="fine">
+    <span>© 2026 Weston Pack 157 · A Local Cub Scout Pack</span>
+    <span>Made by volunteers, for families</span>
+  </div>
+</footer>
+
+<script>// Font pairing Tweaks panel
+(function () {
+  const PAIRINGS = {
+    "expedition": {
+      label: "Expedition (default)",
+      display: '"Oswald", "Bebas Neue", Impact, sans-serif',
+      serif: '"Fraunces", Georgia, serif',
+      body: '"Source Serif 4", Georgia, serif',
+      mono: '"JetBrains Mono", ui-monospace, monospace',
+      script: '"Caveat", cursive',
+    },
+    "summit": {
+      label: "Summit",
+      display: '"Bebas Neue", Impact, sans-serif',
+      serif: '"Lora", Georgia, serif',
+      body: '"Lora", Georgia, serif',
+      mono: '"IBM Plex Mono", ui-monospace, monospace',
+      script: '"Caveat", cursive',
+    },
+    "trailhead": {
+      label: "Trailhead",
+      display: '"Anton", Impact, sans-serif',
+      serif: '"Fraunces", Georgia, serif',
+      body: '"Inter", system-ui, sans-serif',
+      mono: '"JetBrains Mono", ui-monospace, monospace',
+      script: '"Kalam", cursive',
+    },
+    "field-manual": {
+      label: "Field Manual",
+      display: '"Archivo Black", Impact, sans-serif',
+      serif: '"Vollkorn", Georgia, serif',
+      body: '"Vollkorn", Georgia, serif',
+      mono: '"Courier Prime", ui-monospace, monospace',
+      script: '"Homemade Apple", cursive',
+    },
+    "park-service": {
+      label: "Park Service",
+      display: '"Rye", "Oswald", sans-serif',
+      serif: '"Libre Caslon Text", Georgia, serif',
+      body: '"Libre Caslon Text", Georgia, serif',
+      mono: '"Special Elite", ui-monospace, monospace',
+      script: '"Homemade Apple", cursive',
+    },
+  };
+
+  const applyPairing = (key) => {
+    const p = PAIRINGS[key] || PAIRINGS["expedition"];
+    const r = document.documentElement.style;
+    r.setProperty('--font-display', p.display);
+    r.setProperty('--font-serif', p.serif);
+    r.setProperty('--font-body', p.body);
+    r.setProperty('--font-mono', p.mono);
+    r.setProperty('--font-script', p.script);
+    try { localStorage.setItem('pack157-font-pairing', key); } catch (e) {}
+  };
+
+  const saved = (() => { try { return localStorage.getItem('pack157-font-pairing'); } catch (e) { return null; } })();
+  if (saved && PAIRINGS[saved]) applyPairing(saved);
+
+  const panel = document.createElement('div');
+  panel.className = 'tweaks';
+  panel.innerHTML = `
+    <h4>TWEAKS <button class="close">CLOSE</button></h4>
+    <div class="body">
+      <label>Font Pairing</label>
+      <select id="tw-pairing">
+        ${Object.entries(PAIRINGS).map(([k, v]) => `<option value="${k}">${v.label}</option>`).join('')}
+      </select>
+      <div class="preview">
+        <div class="pd">Weston Pack 157</div>
+        <div class="pb">Adventure shared. Grown together.</div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(panel);
+
+  const select = panel.querySelector('#tw-pairing');
+  if (saved && PAIRINGS[saved]) select.value = saved;
+  select.addEventListener('change', (e) => {
+    applyPairing(e.target.value);
+    try { window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { fontPairing: e.target.value } }, '*'); } catch (err) {}
+  });
+
+  panel.querySelector('.close').addEventListener('click', () => {
+    panel.classList.remove('open');
+  });
+
+  window.addEventListener('message', (e) => {
+    const t = e.data && e.data.type;
+    if (t === '__activate_edit_mode') panel.classList.add('open');
+    if (t === '__deactivate_edit_mode') panel.classList.remove('open');
+  });
+  try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch (e) {}
+})();
+</script>
+</body>
+</html>
