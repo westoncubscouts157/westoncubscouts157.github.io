@@ -259,7 +259,12 @@ a:hover { color: var(--rust-deep); }
 
 @media (max-width: 900px) {
   .nav { padding: 16px 24px; }
-  .nav .links { display: none; }
+.nav .links { 
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
   .wrap { padding: 0 24px; }
   .footer .row { grid-template-columns: 1fr 1fr; gap: 32px; }
   .footer { padding: 48px 24px 24px; }
