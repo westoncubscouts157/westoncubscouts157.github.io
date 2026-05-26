@@ -1,0 +1,3370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tiger Den — Advancement Tracker · 2025–2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  :root {
+    --paper: oklch(0.972 0.012 78);
+    --paper-2: oklch(0.95 0.015 78);
+    --ink: oklch(0.22 0.025 60);
+    --ink-2: oklch(0.42 0.025 60);
+    --ink-3: oklch(0.62 0.018 60);
+    --rule: oklch(0.86 0.015 75);
+    --rule-2: oklch(0.78 0.02 70);
+    --amber: oklch(0.66 0.16 50);
+    --amber-deep: oklch(0.52 0.16 45);
+    --amber-soft: oklch(0.93 0.045 70);
+    --green: oklch(0.55 0.11 145);
+    --green-soft: oklch(0.93 0.05 145);
+    --slate-soft: oklch(0.92 0.008 80);
+  }
+  html, body { background: var(--paper); color: var(--ink); }
+  body {
+    margin: 0;
+    font-family: "Inter Tight", system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .serif { font-family: "Newsreader", Georgia, serif; font-weight: 500; letter-spacing: -0.01em; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-feature-settings: "tnum" 1; }
+  a { color: inherit; }
+  *, *::before, *::after { box-sizing: border-box; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+
+  /* ---------- Page frame ---------- */
+  .page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 36px 36px 80px;
+  }
+  @media (max-width: 720px) { .page { padding: 20px 16px 60px; } }
+
+  /* Masthead */
+  .masthead {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: 14px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .masthead-left .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .masthead-left h1 {
+    margin: 0;
+    font-family: "Newsreader", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(34px, 5vw, 54px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+  }
+  .masthead-left h1 em { font-style: italic; color: var(--amber-deep); }
+  .masthead-right {
+    text-align: right;
+    font-size: 12px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .masthead-right .stamp {
+    display: inline-block;
+    border: 1.5px solid var(--ink);
+    padding: 4px 9px 3px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  /* Scout selector */
+  .selector {
+    margin: 22px 0 30px;
+    padding: 14px 16px;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+  }
+  .selector-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .scout-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .scout-chip {
+    padding: 6px 11px;
+    border: 1px solid var(--rule-2);
+    border-radius: 999px;
+    background: var(--paper);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-2);
+    transition: all 0.12s;
+    position: relative;
+  }
+  .scout-chip:hover { border-color: var(--ink); color: var(--ink); }
+  .scout-chip.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .scout-chip .rank-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 999px;
+    background: var(--amber);
+    margin-left: 7px;
+    vertical-align: 2px;
+  }
+  .scout-chip.earned { color: var(--ink); }
+  .scout-chip.active .rank-dot { background: var(--paper); }
+
+  /* Hero rank summary */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+    padding: 26px 0 32px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 36px;
+  }
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; gap: 20px; }
+  }
+  .hero-name {
+    font-family: "Newsreader", Georgia, serif;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+    margin: 0 0 10px;
+  }
+  .hero-status {
+    font-size: 14px;
+    color: var(--ink-2);
+    max-width: 50ch;
+  }
+  .rank-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--amber-soft);
+    color: var(--amber-deep);
+    padding: 3px 9px 3px 7px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .rank-pill.complete { background: var(--green-soft); color: var(--green); }
+  .rank-pill::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 99px;
+    background: currentColor;
+  }
+  .hero-meters {
+    display: flex;
+    gap: 18px;
+    align-items: stretch;
+  }
+  .meter {
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 14px 18px 12px;
+    background: var(--paper-2);
+    min-width: 150px;
+  }
+  .meter-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .meter-value {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .meter-value .of {
+    color: var(--ink-3);
+    font-size: 18px;
+  }
+  .meter-bar {
+    margin-top: 10px;
+    height: 4px;
+    background: var(--slate-soft);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .meter-bar-fill {
+    height: 100%;
+    background: var(--amber);
+    border-radius: 2px;
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .meter.complete .meter-bar-fill { background: var(--green); }
+
+  /* Section */
+  .section { margin-bottom: 36px; }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 14px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .section-title {
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: -0.015em;
+  }
+  .section-title em { font-style: italic; color: var(--ink-2); }
+  .section-rule {
+    font-size: 11px;
+    color: var(--ink-2);
+    letter-spacing: 0.04em;
+  }
+
+  /* Adventure grid */
+  .adv-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  @media (max-width: 720px) { .adv-grid { grid-template-columns: 1fr; } }
+  .adv {
+    border-bottom: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    background: var(--paper);
+    transition: background 0.15s;
+  }
+  .adv:nth-child(2n) { border-right: 0; }
+  @media (max-width: 720px) { .adv { border-right: 0; } }
+  .adv.open {
+    background: var(--paper-2);
+    grid-column: 1 / -1;
+    border-right: 0;
+  }
+  .adv-row {
+    width: 100%;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 28px 1fr auto auto;
+    gap: 14px;
+    align-items: center;
+    padding: 14px 18px;
+    transition: background 0.15s;
+  }
+  .adv-row:hover { background: var(--paper-2); }
+  .adv.open .adv-row { background: transparent; }
+  .adv-row[disabled] { cursor: default; }
+
+  .adv-icon {
+    width: 22px; height: 22px;
+    border-radius: 999px;
+    border: 1.5px solid var(--ink-3);
+    background: var(--paper);
+    position: relative;
+    flex-shrink: 0;
+  }
+  .adv-icon.partial {
+    border-color: var(--amber);
+    background: conic-gradient(var(--amber) calc(var(--p, 0) * 1%), transparent 0);
+  }
+  .adv-icon.partial::after {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border-radius: 999px;
+    background: var(--paper);
+  }
+  .adv-icon.complete {
+    background: var(--green);
+    border-color: var(--green);
+  }
+  .adv-icon.complete::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4 8.5l2.5 2.5L12 5.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>") center / 14px no-repeat;
+  }
+  .adv.open .adv-icon { background: var(--paper-2); }
+  .adv.open .adv-icon.complete { background: var(--green); }
+  .adv.open .adv-icon.partial::after { background: var(--paper-2); }
+
+  .adv-title {
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .adv-tag {
+    display: inline-block;
+    margin-left: 8px;
+    font-family: "Inter Tight", sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    background: var(--amber-soft);
+    padding: 2px 6px;
+    border-radius: 3px;
+    vertical-align: 3px;
+    font-weight: 600;
+  }
+  .adv-sub {
+    font-size: 12px;
+    color: var(--ink-3);
+    margin-top: 3px;
+  }
+  .adv-progress {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    color: var(--ink-2);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .adv-progress.complete { color: var(--green); }
+  .adv-chev {
+    width: 18px;
+    color: var(--ink-3);
+    transition: transform 0.2s;
+  }
+  .adv.open .adv-chev { transform: rotate(180deg); color: var(--ink); }
+  .adv-chev.hidden { visibility: hidden; }
+
+  /* Expanded body */
+  .adv-body {
+    padding: 0 18px 20px 60px;
+    border-top: 1px dashed var(--rule);
+    margin-top: -1px;
+    padding-top: 16px;
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 28px;
+  }
+  @media (max-width: 720px) {
+    .adv-body { grid-template-columns: 1fr; padding: 16px 18px 18px; }
+  }
+  .req-list { margin: 0; padding: 0; list-style: none; }
+  .req {
+    display: grid;
+    grid-template-columns: 22px 1fr auto;
+    gap: 12px;
+    align-items: start;
+    padding: 9px 0;
+    border-bottom: 1px dotted var(--rule);
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .req:last-child { border-bottom: 0; }
+  .req-check {
+    width: 18px; height: 18px;
+    border-radius: 4px;
+    border: 1.5px solid var(--ink-3);
+    background: var(--paper);
+    margin-top: 1px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .req-check.done { background: var(--green); border-color: var(--green); }
+  .req-check.done::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4 8.5l2.5 2.5L12 5.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>") center / 14px no-repeat;
+  }
+  .req-text { color: var(--ink); }
+  .req-text.done { color: var(--ink-3); text-decoration: line-through; text-decoration-color: var(--ink-3); }
+  .req-when {
+    font-size: 11px;
+    color: var(--ink-2);
+    font-weight: 500;
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+  .req-when.home { color: var(--amber-deep); }
+
+  .adv-sidebar {
+    border-left: 1px solid var(--rule);
+    padding-left: 24px;
+  }
+  @media (max-width: 720px) {
+    .adv-sidebar { border-left: 0; border-top: 1px solid var(--rule); padding: 16px 0 0; }
+  }
+  .sidebar-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .sidebar-item {
+    font-size: 13px;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .sidebar-item .when-tag {
+    display: inline-block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    padding: 1px 6px;
+    background: var(--slate-soft);
+    color: var(--ink-2);
+    border-radius: 3px;
+    margin-right: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .sidebar-item .when-tag.home { background: var(--amber-soft); color: var(--amber-deep); }
+  .sidebar-empty {
+    font-size: 12px;
+    color: var(--ink-3);
+    font-style: italic;
+  }
+
+  /* Footer */
+  .legend {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: var(--ink-2);
+  }
+  .legend-item { display: flex; align-items: center; gap: 8px; }
+  .legend-swatch { width: 14px; height: 14px; border-radius: 999px; }
+  .legend-swatch.complete { background: var(--green); }
+  .legend-swatch.partial { background: conic-gradient(var(--amber) 60%, var(--paper-2) 0); border: 1.5px solid var(--amber); }
+  .legend-swatch.empty { border: 1.5px solid var(--ink-3); background: var(--paper); }
+  .footer-note {
+    margin-top: 14px;
+    font-size: 11px;
+    color: var(--ink-3);
+    max-width: 70ch;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="application/json" id="den-data"></script>
+
+<script type="text/babel" data-presets="react">
+const RAW = {
+  "scouts": [
+    "Parker",
+    "Oliver",
+    "Ryan",
+    "Felix",
+    "Cameron",
+    "Morris",
+    "Drew",
+    "James",
+    "Thatcher",
+    "Linden",
+    "Theo",
+    "Soren",
+    "Beckett",
+    "Hudson",
+    "Walter"
+  ],
+  "adventures": [
+    {
+      "type": "Required",
+      "name": "Bobcat Adventure (Character & Leadership)",
+      "tag": null,
+      "earned": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        true,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. Get to know the members of your den.",
+          "done": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. Recite the Scout Oath with your den, including your Tiger adult partner.",
+          "done": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. Have your Tiger adult partner or den leader read the Scout Law to you.  Demonstrate your understanding of being trustworthy, helpful, or friendly.",
+          "done": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. Demonstrate the Cub Scout sign, Cub Scout salute and Cub Scout handshake.  Show how each are used.",
+          "done": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "5. Share with your Tiger adult partner, at a den meeting or at home, a time when you have demonstrated the Cub Scout motto “Do Your Best.”",
+          "done": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "6. At home, with your parent or legal guardian do the activities in the booklet “How to Protect Your Children from Child Abuse: A Parent’s Guide.”",
+          "done": [
+            false,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Required",
+      "name": "Tigers In The Wild (Outdoors)",
+      "tag": null,
+      "earned": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "requirements": [
+        {
+          "text": "1. Identify the Cub Scout Six Essentials. Show what you do with each item.",
+          "done": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. With your den leader or Tiger adult partner, learn about the Outdoor Code.",
+          "done": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. With your den, pack, or family, take a walk outside spending for at least 20 minutes exploring the outdoors with your Cub Scout Six Essentials.  While outside, identify things that you see with your Tiger adult partner that are natural and things that are manmade.",
+          "done": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. Identify common animals that are found where you live. Learn which of those animals is domesticated and which animal is wild.  Draw a picture of your favorite animal.",
+          "done": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "5. Look for a tree where you live.  Describe how this tree is helpful.",
+          "done": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Required",
+      "name": "Tiger Bites (Personal Fitness)",
+      "tag": null,
+      "earned": [
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. Identify the 5 different food groups.",
+          "done": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. Practice hand washing. Point out when you should wash your hands.",
+          "done": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. Be active for 30 minutes.",
+          "done": [
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. Practice methods that help you sleep.",
+          "done": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Required",
+      "name": "Team Tiger (Citizenship)",
+      "tag": null,
+      "earned": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. Play a game with your den, or family members, that has a set of rules.  Discuss why rules are important to the game you are playing.",
+          "done": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. With your Tiger Adult Partner, choose a job that will help your team. Follow through by doing that job at least once.",
+          "done": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. Play a game that requires at least 2 teams with your den, or two other family members. Afterwards discuss what it means to be part of a team and what makes a good team member.",
+          "done": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. Participate in a service project.",
+          "done": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Required",
+      "name": "Tiger's Roar (Personal Safety)",
+      "tag": null,
+      "earned": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false,
+        false,
+        true,
+        true,
+        false,
+        true,
+        true,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. With permission from your parent or legal guardian watch the Protect Yourself Rules video for the Tiger rank.",
+          "done": [
+            false,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. With your Tiger adult partner, demonstrate Shout, Run, Tell as explained in the Protect Yourself Rules video.",
+          "done": [
+            false,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            false,
+            true,
+            true,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. With your Tiger adult partner, demonstrate how to access emergency services.",
+          "done": [
+            false,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            false,
+            true,
+            true,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. With your Tiger adult partner, demonstrate that you know what to do if you get lost or separated.",
+          "done": [
+            false,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            false,
+            true,
+            true,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Required",
+      "name": "Tiger Circles (Family & Reverence)",
+      "tag": null,
+      "earned": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. With your parent or legal guardian talk about your family’s faith traditions.   Identify three holidays or celebrations that are part of your family’s faith traditions. Draw a picture of your favorite family’s faith tradition holiday or celebration.",
+          "done": [
+            false,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            true,
+            true,
+            false,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. With your family, attend a religious service OR other gathering that shows how your family expresses Family & Reverence.",
+          "done": [
+            false,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. Carry out an act of kindness.",
+          "done": [
+            false,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Elective",
+      "name": "Champions for Nature Tiger",
+      "tag": null,
+      "earned": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "requirements": [
+        {
+          "text": "1. Discover the difference between renewable natural resources and non-renewable natural resources.",
+          "done": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. Learn about the 3 R’s: Reduce, Reuse, Recycle.",
+          "done": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. Discover what happens to the garbage in your community",
+          "done": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. Participate in a conservation project.",
+          "done": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            true
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Elective",
+      "name": "Curiosity, Intrigue, and Magical Mysteries",
+      "tag": null,
+      "earned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. Learn a magic trick.  Practice the trick.  Share the trick with you den or family members.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. Demonstrate how a magic trick works to your den, family or Tiger adult partner.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. Write your name in secret code.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. Write a message with the code. Challenge your den, family or Tiger adult partner to read your coded message.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Elective",
+      "name": "Designed by Tiger",
+      "tag": null,
+      "earned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. Think about something that you would like to build.  Draw a picture of what the final project should look like.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. Using your drawing as a guide, build the project.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. When completed, discuss with your Tiger adult partner what could be done to improve  your project.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. Make the improvement to your project.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "5. Make a drawing of your final project.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Elective",
+      "name": "Fish On",
+      "tag": "Derby",
+      "earned": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. With your den or Tiger adult partner, identify the body of water where you will go fishing.",
+          "done": [
+            false,
+            false,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. With your Tiger adult partner, learn the rules of fishing safely.",
+          "done": [
+            false,
+            false,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. Draw a picture of the type of fish you think lives in the water where you are going fishing.",
+          "done": [
+            false,
+            false,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. Go fishing with your Tiger adult partner.",
+          "done": [
+            false,
+            false,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Elective",
+      "name": "Floats and Boats",
+      "tag": null,
+      "earned": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. Identify five different types of boats.",
+          "done": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. Identify five things that float and five things that do not float.",
+          "done": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. Build or create a model boat and float it on the water. This can be made from recycled materials or other items.",
+          "done": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. Show that you can put on and fasten a life jacket correctly and learn when it is safe to enter a boat.",
+          "done": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Elective",
+      "name": "Good Knights",
+      "tag": null,
+      "earned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. Discuss with your den or Tiger adult partner what it means to have courteous  behavior, how a knight behaves. Tell another Tiger which points of the Scout Law help you to have the same Knightly behavior.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. Create a shield that can be for your den or a personal shield.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. Using recycled and other materials, design and build a small castle in your den or at home.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. Do a Good Turn.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Elective",
+      "name": "Let’s Camp Tiger",
+      "tag": null,
+      "earned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "requirements": [
+        {
+          "text": "1. Learn about the buddy system and how it works in the outdoors.",
+          "done": [
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. Before going on the overnight campout, discuss what type of weather is expected and what type of clothes you should wear.",
+          "done": [
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. Pack up your Cub Scout Six Essentials for the campout.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. Learn a camping skill",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "5. Attend a council or district Cub Scout overnight camp or attend a campout with your pack.",
+          "done": [
+            false,
+            true,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Elective",
+      "name": "Race Time Tiger",
+      "tag": null,
+      "earned": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true,
+        true
+      ],
+      "requirements": [
+        {
+          "text": "1. With your Tiger adult partner, assemble and decorate either a Pinewood Derby® car or a Raingutter Regatta™ boat.",
+          "done": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            true,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. Learn the rules of the race for the vehicle chosen in requirement 1.",
+          "done": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            true,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. Before the race, discuss with your Tiger adult partner how you will demonstrate good sportsmanship during the race.",
+          "done": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            true,
+            true
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. With your Tiger adult partner, participate in a Pinewood Derby or a Raingutter Regatta.",
+          "done": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            true,
+            true
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Elective",
+      "name": "Rolling Tigers",
+      "tag": null,
+      "earned": [
+        false,
+        true,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. Learn the ABC’s of bike gear (air, brakes, chain.)",
+          "done": [
+            false,
+            true,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. With your den or Tiger adult partner, learn about the safety gear you should use while riding a bicycle.",
+          "done": [
+            false,
+            true,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. With your den or Tiger adult partner, learn the safety rules to follow when riding a  bicycle.",
+          "done": [
+            false,
+            true,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. With your den or Tiger adult partner, demonstrate proper hand signals.",
+          "done": [
+            false,
+            true,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "5. With your Tiger adult partner or family, ride a bike or begin learning how to ride a bike.",
+          "done": [
+            false,
+            true,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Elective",
+      "name": "Safe and Smart",
+      "tag": null,
+      "earned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. Memorize your address. Recite it to your Tiger adult partner or den leader.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. Memorize an emergency contact’s phone number. Recite it to your Tiger adult partner or den leader.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. Show you can Stop, Drop and Roll.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. With your Tiger adult partner or den leader, create a fire escape plan for your home or den meeting  place.  Include your outside meet-up spot.  Practice the escape route you would take.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "5. With your Tiger adult partner, find the location of the smoke detectors in your home or den meeting place.  Confirm they are working properly.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "6. With your Tiger adult partner or den leader, learn why matches and lighters are only for adults.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "7. Visit an emergency responder station or have an emergency responder visit your den.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Elective",
+      "name": "Sky is the Limit",
+      "tag": null,
+      "earned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. Observe the night sky with your den or Tiger adult partner. Talk about the items you see or might see there.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. Look at distant objects through a telescope, binoculars, or camera. Show how to focus the device you choose.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. Observe in the sky or select from a book, chart, computer, or electronic device two constellations that are easy to see in the night sky. With your den or Tiger adult partner, find out the constellation name and how to identify them. Create a picture of one of the constellations.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. Create a homemade model of a constellation.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Elective",
+      "name": "Stories in Shapes",
+      "tag": null,
+      "earned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. Explore art in your community.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. Look closely at art or a picture of art with your den or Tiger adult partner. Decide what you like about the art, and share your ideas with your den, family or Tiger adult partner.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. Create a piece of art using shapes.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. Learn how to spell your name in Braille and sign language.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Elective",
+      "name": "Tech All Around",
+      "tag": null,
+      "earned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. Discover technology around your home, meeting place, or neighborhood.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. Discover ways that digital technology can make life easier.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. Identify an item of digital technology you use at home.  Demonstrate to your adult partner how you use it safely.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. With your parent or legal guardian, set up a policy for digital devices.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Elective",
+      "name": "Tiger Tag",
+      "tag": null,
+      "earned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. Play an active game with your den. Share with your Tiger adult partner or your den why you like this game.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. Play a relay game with your den.  Share with your Tiger adult partner or your den why you like this game.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. Discuss what it means to be a good sport in a game with your Tiger adult partner or other Tigers.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. Attend a sporting event.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Elective",
+      "name": "Tiger-iffic!",
+      "tag": null,
+      "earned": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. Play at least two different games by yourself; one may be a video game.",
+          "done": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. Play a board game or another inside game with one or more members of your den or family.",
+          "done": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. With other members of your den or family, invent a game, or change the rules of a game you know, and play the game.",
+          "done": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. Play a team game with your den or family.",
+          "done": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "type": "Elective",
+      "name": "Tigers in the Water",
+      "tag": null,
+      "earned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "requirements": [
+        {
+          "text": "1. Learn about the swimming safety rules that you need to follow.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "2. Demonstrate how to enter the swimming area properly.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "3. With your Tiger adult partner as your buddy, be active in water depths matching your ability for 20 minutes.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "4. Place your face in the water and blow bubbles.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "5. Demonstrate a flutter kick.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        },
+        {
+          "text": "6. Demonstrate how to exit the swimming area properly.",
+          "done": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "note": ""
+        }
+      ]
+    }
+  ]
+};
+
+const { useState, useEffect, useMemo } = React;
+
+const HOME_RE = /HOME\/PARENT|Home\/Parent|home\/parent/i;
+
+function classifyNote(note) {
+  if (!note) return null;
+  if (HOME_RE.test(note)) return { kind: 'home', text: 'At home' };
+  return { kind: 'when', text: note };
+}
+
+function App() {
+  const { scouts, adventures } = RAW;
+  // index of selected scout
+  const [scoutIdx, setScoutIdx] = useState(() => {
+    const h = decodeURIComponent((window.location.hash || '').replace('#', ''));
+    const found = scouts.findIndex(s => s.toLowerCase().replace(/\s+/g,'-') === h.toLowerCase());
+    return found >= 0 ? found : 0;
+  });
+  const [openId, setOpenId] = useState(null);
+
+  useEffect(() => {
+    const slug = scouts[scoutIdx].toLowerCase().replace(/\s+/g, '-');
+    if (decodeURIComponent((window.location.hash || '').replace('#','')) !== slug) {
+      history.replaceState(null, '', '#' + slug);
+    }
+    setOpenId(null); // collapse when switching scouts
+  }, [scoutIdx]);
+
+  // Per-scout stats per adventure
+  const advStats = useMemo(() => adventures.map((a, i) => {
+    const done = a.requirements.filter(r => r.done[scoutIdx]).length;
+    const total = a.requirements.length;
+    const complete = total > 0 && done === total;
+    return { idx: i, done, total, complete, pct: total ? done/total : 0 };
+  }), [scoutIdx, adventures]);
+
+  const required = adventures.map((a, i) => ({ a, s: advStats[i] })).filter(x => x.a.type === 'Required');
+  const electives = adventures.map((a, i) => ({ a, s: advStats[i] })).filter(x => x.a.type === 'Elective');
+
+  const reqDone = required.filter(x => x.s.complete).length;
+  const reqTotal = required.length; // 6
+  const elecDone = electives.filter(x => x.s.complete).length;
+  const elecNeeded = 2;
+  const rankEarned = reqDone === reqTotal && elecDone >= elecNeeded;
+
+  // Total raw requirement completion (for overall percent)
+  const totalReqs = adventures.reduce((s, a) => s + a.requirements.length, 0);
+  const totalDone = adventures.reduce((s, a) => s + a.requirements.filter(r => r.done[scoutIdx]).length, 0);
+
+  const scoutName = scouts[scoutIdx];
+  const firstName = scoutName.split(' ')[0];
+
+  return (
+    <div className="page">
+      {/* Masthead */}
+      <header className="masthead">
+        <div className="masthead-left">
+          <div className="eyebrow">Tiger Den · Pack Advancement</div>
+          <h1>The Tiger <em>Ledger</em></h1>
+        </div>
+        <div className="masthead-right">
+          <div className="stamp">Season 2025 — 2026</div>
+          <div>Updated {new Date().toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' })}</div>
+        </div>
+      </header>
+
+      {/* Selector */}
+      <div className="selector">
+        <div className="selector-label">Showing progress for · <span style={{textTransform:'none',letterSpacing:0,fontWeight:500,color:'var(--ink-3)'}}>scouts marked <span style={{display:'inline-block',width:6,height:6,borderRadius:999,background:'var(--amber)',verticalAlign:2,marginLeft:2,marginRight:2}}></span> have earned Tiger rank</span></div>
+        <div className="scout-chips">
+          {scouts.map((s, i) => {
+            const reqDoneI = adventures.filter(a => a.type === 'Required' && a.requirements.every(r => r.done[i])).length;
+            const elecDoneI = adventures.filter(a => a.type === 'Elective' && a.requirements.length > 0 && a.requirements.every(r => r.done[i])).length;
+            const earned = reqDoneI === 6 && elecDoneI >= 2;
+            return (
+              <button
+                key={i}
+                className={'scout-chip' + (i === scoutIdx ? ' active' : '') + (earned ? ' earned' : '')}
+                onClick={() => setScoutIdx(i)}
+                title={earned ? 'Tiger rank earned' : undefined}
+              >
+                {s}
+                {earned && <span className="rank-dot" aria-label="Tiger rank earned" />}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Hero */}
+      <section className="hero">
+        <div>
+          {rankEarned
+            ? <span className="rank-pill complete">Tiger rank earned</span>
+            : <span className="rank-pill">In progress · Tiger rank</span>}
+          <h2 className="hero-name">{scoutName}</h2>
+          <p className="hero-status">
+            {rankEarned
+              ? <>Congratulations — {firstName} has completed all six required adventures plus the elective threshold.</>
+              : <>{firstName} has completed <strong>{reqDone} of {reqTotal}</strong> required adventures and <strong>{elecDone} of {elecNeeded}</strong> needed electives. {totalDone} of {totalReqs} individual requirements checked off so far.</>}
+          </p>
+        </div>
+        <div className="hero-meters">
+          <div className={'meter' + (reqDone === reqTotal ? ' complete' : '')}>
+            <div className="meter-label">Required</div>
+            <div className="meter-value">{reqDone}<span className="of">/{reqTotal}</span></div>
+            <div className="meter-bar"><div className="meter-bar-fill" style={{width: `${100*reqDone/reqTotal}%`}}/></div>
+          </div>
+          <div className={'meter' + (elecDone >= elecNeeded ? ' complete' : '')}>
+            <div className="meter-label">Electives</div>
+            <div className="meter-value">{elecDone}<span className="of">/{elecNeeded}</span></div>
+            <div className="meter-bar"><div className="meter-bar-fill" style={{width: `${Math.min(100, 100*elecDone/elecNeeded)}%`}}/></div>
+          </div>
+        </div>
+      </section>
+
+      <Section
+        title="Required Adventures"
+        subtitle="Complete all six"
+        items={required}
+        scoutIdx={scoutIdx}
+        openId={openId}
+        setOpenId={setOpenId}
+      />
+      <Section
+        title="Elective Adventures"
+        subtitle={`Complete any two · ${elecDone} earned`}
+        items={electives}
+        scoutIdx={scoutIdx}
+        openId={openId}
+        setOpenId={setOpenId}
+        sortIncompleteFirst
+      />
+
+      <div className="legend">
+        <div className="legend-item"><div className="legend-swatch complete"/> Adventure complete</div>
+        <div className="legend-item"><div className="legend-swatch partial"/> In progress — click to see what's left</div>
+        <div className="legend-item"><div className="legend-swatch empty"/> Not yet started</div>
+      </div>
+      <p className="footer-note">
+        Notes marked <strong>"At home"</strong> are requirements completed by the Tiger and adult partner outside of den meetings — please record them with your den leader once finished. Den-meeting requirements without a check should be wrapped up at the listed meeting; if your Scout missed it, reach out and we'll schedule a make-up.
+      </p>
+    </div>
+  );
+}
+
+function Section({ title, subtitle, items, scoutIdx, openId, setOpenId, sortIncompleteFirst }) {
+  const sorted = sortIncompleteFirst
+    ? [...items].sort((a, b) => {
+        // electives: completed first (so earned ones float to top), then by progress desc
+        if (a.s.complete !== b.s.complete) return a.s.complete ? -1 : 1;
+        return b.s.pct - a.s.pct;
+      })
+    : items;
+
+  return (
+    <section className="section">
+      <div className="section-head">
+        <h3 className="section-title">{title} <em>· {subtitle}</em></h3>
+      </div>
+      <div className="adv-grid">
+        {sorted.map(({ a, s }) => (
+          <Adventure
+            key={s.idx}
+            a={a}
+            s={s}
+            scoutIdx={scoutIdx}
+            open={openId === s.idx}
+            onToggle={() => setOpenId(openId === s.idx ? null : s.idx)}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Adventure({ a, s, scoutIdx, open, onToggle }) {
+  const noteSet = useMemo(() => {
+    const seen = new Set();
+    const out = [];
+    a.requirements.forEach(r => {
+      if (r.note && !seen.has(r.note)) {
+        seen.add(r.note);
+        out.push(r.note);
+      }
+    });
+    return out;
+  }, [a]);
+
+  const iconClass = s.complete ? 'complete' : (s.done > 0 ? 'partial' : '');
+  const cleanName = a.name.replace(/\s*\(.*?\)\s*$/, '');
+  const subtitle = a.name.match(/\(([^)]+)\)\s*$/)?.[1];
+
+  return (
+    <div className={'adv' + (open ? ' open' : '')}>
+      <button className="adv-row" onClick={onToggle}>
+        <span className={'adv-icon ' + iconClass} style={{ '--p': Math.round(s.pct * 100) }}/>
+        <span>
+          <span className="adv-title">{cleanName}</span>
+          {a.tag && <span className="adv-tag">{a.tag}</span>}
+          {subtitle && <div className="adv-sub">{subtitle}</div>}
+        </span>
+        <span className={'adv-progress' + (s.complete ? ' complete' : '')}>{s.done}/{s.total}</span>
+        <svg className="adv-chev" viewBox="0 0 20 20" fill="none">
+          <path d="M5 8l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </button>
+      {open && (
+        <div className="adv-body">
+          <ul className="req-list">
+            {a.requirements.map((r, i) => {
+              const done = r.done[scoutIdx];
+              const note = classifyNote(r.note);
+              return (
+                <li key={i} className="req">
+                  <span className={'req-check' + (done ? ' done' : '')}/>
+                  <span className={'req-text' + (done ? ' done' : '')}>{r.text.replace(/^\d+\.\s*/, '')}</span>
+                  {note && (
+                    <span className={'req-when' + (note.kind === 'home' ? ' home' : '')}>
+                      {note.kind === 'home' ? 'At home' : note.text}
+                    </span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+          <aside className="adv-sidebar">
+            <div className="sidebar-label">Where it gets done</div>
+            {noteSet.length === 0 ? (
+              <div className="sidebar-empty">No scheduled meeting yet — earn this elective independently with your Tiger adult partner.</div>
+            ) : (
+              noteSet.map((n, i) => {
+                const cls = classifyNote(n);
+                return (
+                  <div key={i} className="sidebar-item">
+                    <span className={'when-tag' + (cls.kind === 'home' ? ' home' : '')}>
+                      {cls.kind === 'home' ? 'Home' : 'Den'}
+                    </span>
+                    {cls.kind === 'home' ? 'Parent-led at home' : n}
+                  </div>
+                );
+              })
+            )}
+            {s.complete && (
+              <div className="sidebar-item" style={{ marginTop: 14, color: 'var(--green)', fontWeight: 600 }}>
+                ✓ Adventure complete
+              </div>
+            )}
+          </aside>
+        </div>
+      )}
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
+
+<script>
+  // inline data is loaded by the babel script via __DATA__ token replaced at write time.
+</script>
+</body>
+</html>
