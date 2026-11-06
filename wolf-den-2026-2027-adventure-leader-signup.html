@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wolf Den 2026–2027 Adventure Leader Sign-up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --blue:#003F87; --gold:#FDC116; --red:#C8102E;
+  --bg:#F6F8FB; --paper:#FFFFFF; --ink:#16233A; --muted:#5A6882;
+  --line:#D6DDE8; --band:#E8EEF7; --slot:#F2F5FA;
+  --req-bg:#FBE7EA; --req-ink:#9E0C24; --elec-bg:#FFF3CC; --elec-ink:#6B5000;
+  --tent-ink:#8A6D00;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1726; --paper:#15213A; --ink:#E7ECF5; --muted:#9DAAC2;
+    --line:#2A3A58; --band:#1B2A47; --slot:#1A2743;
+    --req-bg:#3A1620; --req-ink:#FFB3BF; --elec-bg:#3A3110; --elec-ink:#FFE08A;
+    --tent-ink:#FFD65C; --blue:#7FB0F0;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1726; --paper:#15213A; --ink:#E7ECF5; --muted:#9DAAC2;
+  --line:#2A3A58; --band:#1B2A47; --slot:#1A2743;
+  --req-bg:#3A1620; --req-ink:#FFB3BF; --elec-bg:#3A3110; --elec-ink:#FFE08A;
+  --tent-ink:#FFD65C; --blue:#7FB0F0;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px 48px}
+header{background:#003F87;color:#fff;border-bottom:6px solid var(--gold)}
+header .wrap{padding-top:28px;padding-bottom:24px}
+h1{font:800 clamp(1.9rem,5vw,2.8rem)/1.1 Bitter,Georgia,serif;margin:0 0 8px}
+header p{margin:0;max-width:62ch;color:#DCE7F7}
+.how{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--gold);padding:14px 18px;margin:24px 0;max-width:75ch}
+.how p{margin:0 0 6px}.how p:last-child{margin:0}
+h2{font:800 1.35rem/1.2 Bitter,Georgia,serif;margin:36px 0 12px;color:var(--blue)}
+.table{border:1px solid var(--line);background:var(--paper);overflow-x:auto}
+.thead,.row{display:grid;grid-template-columns:130px minmax(260px,1.6fr) minmax(170px,1fr) minmax(170px,1fr)}
+.thead{background:var(--band);font-weight:700;font-size:.9rem;color:var(--muted);border-bottom:1px solid var(--line)}
+.thead div{padding:10px 12px}
+.row{border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row>div{padding:14px 12px}
+.when{font-weight:700}
+.when small{display:block;font-weight:400;color:var(--muted)}
+.adv h3{font:600 1.08rem/1.3 Bitter,Georgia,serif;margin:0 0 6px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.tag{font-size:.78rem;font-weight:700;padding:1px 8px;border-radius:3px}
+.tag.req{background:var(--req-bg);color:var(--req-ink)}
+.tag.elec{background:var(--elec-bg);color:var(--elec-ink)}
+.tag.tent{border:1px dashed var(--tent-ink);color:var(--tent-ink)}
+.adv p a{color:var(--blue);text-underline-offset:2px}
+.adv p{margin:0 0 4px;color:var(--muted);font-size:.95rem}
+.adv ul{margin:4px 0 0;padding-left:18px;font-size:.93rem}
+.slot{background:var(--slot);border:1px dashed var(--line);border-radius:4px;padding:10px;min-height:64px}
+.slot.filled{border-style:solid;border-color:var(--blue);background:var(--paper)}
+.slot .lbl{font-size:.8rem;color:var(--muted);display:block;margin-bottom:2px}
+.slot .who{font-weight:700}
+.slot .kid{font-size:.9rem;color:var(--muted)}
+.adv h3 a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+.adv h3 a:hover{text-decoration-thickness:2px}
+.adv h3 .sugg{display:block;font:700 .78rem/1.3 "Source Sans 3",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:2px}
+.row{grid-template-rows:auto 1fr}
+.row .when,.row .adv{grid-row:span 2}
+.row>.altcell{grid-column:3 / -1;padding-bottom:0}
+.slot.alt{min-height:0;font-size:.93rem;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+.slot.alt .lbl{margin:0}
+.slot.alt:has(input){display:block}
+.slot.alt.filled{display:block}
+.btn.ghost{background:transparent;color:var(--blue);border:1.5px solid var(--blue);padding:4px 10px}
+:root[data-theme="dark"] .btn.ghost{color:var(--blue)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.ghost{color:var(--blue)}}
+.slot.alt.filled{border-color:var(--gold)}
+.slot.alt .who{font-weight:700}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--blue);color:#fff;border:0;border-radius:4px;padding:6px 12px;font-weight:600}
+:root[data-theme="dark"] .btn{color:#0E1726}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn{color:#0E1726}}
+.link{background:none;border:0;color:var(--blue);padding:0;text-decoration:underline;font-size:.88rem;margin-top:4px}
+.slot input{width:100%;font:inherit;padding:6px 8px;margin:3px 0;border:1px solid var(--line);border-radius:4px;background:var(--paper);color:var(--ink)}
+.slot .actions{display:flex;gap:10px;align-items:center;margin-top:4px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.status{font-size:.9rem;color:var(--muted);margin-top:8px}
+footer{color:var(--muted);font-size:.9rem;margin-top:32px}
+@media (max-width:760px){
+  .thead{display:none}
+  .row{grid-template-columns:1fr 1fr}
+  .row{grid-template-rows:none}
+  .row .when,.row .adv{grid-column:1 / -1;grid-row:auto;padding-bottom:4px}
+  .row>.altcell{grid-column:1 / -1}
+  .row .when{padding-bottom:0}
+}
+@media (max-width:420px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>🐺 Wolf Den 2026–2027</h1>
+  <p>Adventure leader sign-up. Each meeting needs two parents to lead the adventure with the den leader. Pick a month that works for you.</p>
+</div></header>
+
+<main class="wrap">
+  <div class="how">
+    <p><strong>How it works:</strong> tap <em>Sign up</em> under Adventure Leader #1 or #2, enter your first name, and save. You can remove your own sign-up if plans change.</p>
+    <p><strong>Want to lead a different adventure?</strong> Each month shows a suggested adventure, but you're welcome to propose another. Tap <em>Suggest a different adventure</em> above the leader spots, enter the adventure and your first name, and save. The den leader will follow up with you.</p>
+    <p>Rows marked <em>tentative</em> are penciled in and may shift. The den leader will send materials and ideas about two weeks before your meeting.</p>
+  </div>
+
+  <h2>Meetings and adventures</h2>
+  <div class="table" role="table" aria-label="Meeting sign-ups">
+    <div class="thead" role="row"><div>Month</div><div>Adventure</div><div>Adventure Leader #1</div><div>Adventure Leader #2</div></div>
+    <div id="rows"></div>
+  </div>
+  <p class="status" id="status">Loading sign-ups…</p>
+
+  <footer>Weston Cub Scouts Pack 157, Wolf Den. Requirements: scouting.org/programs/cub-scouts/adventures/wolf</footer>
+</main>
+
+<script>
+const MEETINGS = [
+  { id:"nov-den", url:"https://www.scouting.org/cub-scout-adventures/germs-alive/", month:"November", sub:"Den meeting", adv:"Germs Alive!", type:"elec",
+    desc:"Indoor science meeting on how germs spread, just in time for cold and flu season.",
+    items:["Glo Germ exploration with a UV light","Sneeze and mucus demonstrations","Germy Bread Investigation"] },
+  { id:"dec-den", url:"https://www.scouting.org/cub-scout-adventures/council-fire/", month:"December", sub:"Den meeting", adv:"Council Fire", type:"req", tentative:true,
+    desc:"Citizenship: caring for the flag and building a neighborhood.",
+    items:["Care for and fold the U.S. flag; flag ceremony","Build a model home and neighborhood"] },
+  { id:"jan-den", url:"https://www.scouting.org/cub-scout-adventures/adventures-in-coins/", month:"January", sub:"Den meeting", adv:"Adventures in Coins", type:"elec",
+    desc:"Indoor meeting. One of my personal favorites.",
+    items:["Parts of a coin and mint marks","Play a coin game (balance scale)","Coin rubbing with details","<strong>Bonus points:</strong> invite a numismatist (coin collector) to share their collection with the kids"] },
+  { id:"feb-den", url:"https://www.scouting.org/cub-scout-adventures/lets-camp-wolf/", month:"February", sub:"Den meeting", adv:"Let's Camp Wolf", type:"elec",
+    desc:"Very simple one to organize: parents in groups of two will run each station.",
+    items:["Overhand and square knot (core)","Bowline, sheet bend, taut-line hitch stations","Build a tent"] },
+  { id:"mar-den", url:"https://www.scouting.org/cub-scout-adventures/finding-your-way/", month:"March", sub:"Den meeting + hike or scavenger hunt", adv:"Finding Your Way", type:"elec",
+    desc:"Map and compass skills, paired with a hike or scavenger hunt in town to put them to use.",
+    items:["Find where you live on a map","Draw a map with a key for a friend","Directions and the compass rose","Use a compass to find north, east, south and west","Map and compass practice on the hike or scavenger hunt"] },
+  { id:"apr-fishing", url:"https://www.scouting.org/cub-scout-adventures/a-wolf-goes-fishing/", month:"April", sub:"Fishing Derby", adv:"A Wolf Goes Fishing", type:"elec",
+    desc:"Coordinated with a den fishing clinic led by the <a href=\"https://www.mass.gov/service-details/get-started-fishing\" target=\"_blank\" rel=\"noopener\">MassWildlife Angler Education Program</a>. As a volunteer, you help set up the logistics with them.",
+    items:["Type of water and fish that live there","Bait and a proper cast","Fishing safety rules"] },
+  { id:"may-den", url:"https://www.scouting.org/cub-scout-adventures/running-with-the-pack/", month:"May", sub:"Den meeting", adv:"Running with the Pack", type:"req", tentative:true,
+    desc:"Outdoor fitness meeting to wrap up the year.",
+    items:["Taste three foods of three colors","30 minutes of stretching and moving","A 10-minute relaxing activity"] }
+];
+
+// Paste your Google Apps Script web app URL between the quotes (it ends in /exec).
+const API_URL = "https://script.google.com/macros/s/AKfycbwmT0gxvU0ESQ7x9Lg9sBE3Y7mD3GlXktNVwBTmul0SvpvWwupsPFgC1GuFRkPOALQ/exec";
+
+const state = { data:{}, ready:false, editing:null, busy:false, tokens:{} };
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const TOKEN_KEY = "pack157-wolf-signup-tokens";
+try { state.tokens = JSON.parse(localStorage.getItem(TOKEN_KEY) || "{}") || {}; } catch(_) { state.tokens = {}; }
+function saveTokens(){ try { localStorage.setItem(TOKEN_KEY, JSON.stringify(state.tokens)); } catch(_) {} }
+const status = msg => { $("#status").textContent = msg; };
+
+function slotHTML(m, n){
+  const key = "slot"+n, v = (state.data[m.id]||{})[key], ref = m.id+"|"+key;
+  const label = `<span class="lbl">Adventure Leader #${n}</span>`;
+  if (v && v.name){
+    const mine = !!state.tokens[ref];
+    return `<div class="slot filled">${label}<div class="who">${esc(v.name)}</div>
+      ${mine ? `<button class="link" data-remove="${ref}">Remove</button>`:""}</div>`;
+  }
+  if (state.editing === ref){
+    return `<div class="slot">${label}
+      <input id="in-name" placeholder="Your first name" aria-label="Your first name" autocomplete="given-name" maxlength="40">
+      <div class="actions"><button class="btn" data-save="${ref}">Save</button><button class="link" data-cancel>Cancel</button></div></div>`;
+  }
+  if (!state.ready) return `<div class="slot">${label}<span class="kid">Open</span></div>`;
+  return `<div class="slot">${label}<button class="btn" data-open="${ref}">Sign up</button></div>`;
+}
+
+function altHTML(m){
+  const v = (state.data[m.id]||{}).alt, ref = m.id+"|alt";
+  if (v && v.adventure){
+    const mine = !!state.tokens[ref];
+    return `<div class="slot alt filled"><span class="lbl">Alternative adventure proposed</span><div class="who">${esc(v.adventure)}</div>${v.name?`<div class="kid">Suggested by ${esc(v.name)}</div>`:""}
+      ${mine ? `<button class="link" data-remove="${ref}">Remove</button>`:""}</div>`;
+  }
+  if (state.editing === ref){
+    return `<div class="slot alt"><span class="lbl">Suggest a different adventure</span>
+      <input id="in-alt-adv" placeholder="Adventure you'd like to do" aria-label="Adventure you'd like to do" maxlength="80">
+      <input id="in-alt-name" placeholder="Your first name" aria-label="Your first name" autocomplete="given-name" maxlength="40">
+      <div class="actions"><button class="btn" data-save-alt="${ref}">Save</button><button class="link" data-cancel>Cancel</button></div></div>`;
+  }
+  const lbl = `<span class="lbl">Want to do a different adventure? (optional)</span>`;
+  if (!state.ready) return `<div class="slot alt">${lbl}<span class="kid">Loading…</span></div>`;
+  return `<div class="slot alt">${lbl}<button class="btn ghost" data-open="${ref}">Suggest a different adventure</button></div>`;
+}
+
+function render(){
+  $("#rows").innerHTML = MEETINGS.map(m => `
+    <div class="row" role="row">
+      <div class="when">${m.month}<small>${m.sub}</small></div>
+      <div class="adv"><h3><span class="sugg">Suggested Adventure:</span> <a href="${m.url}" target="_blank" rel="noopener">${m.adv}</a></h3>
+        <div class="tags"><span class="tag ${m.type}">${m.type==="req"?"Required":"Elective"}</span>${m.tentative?'<span class="tag tent">Tentative</span>':""}</div>
+        <p>${m.desc}</p><ul>${m.items.map(i=>`<li>${i}</li>`).join("")}</ul></div>
+      <div class="altcell">${altHTML(m)}</div><div>${slotHTML(m,1)}</div><div>${slotHTML(m,2)}</div>
+    </div>`).join("");
+  if (state.editing){ const i=$("#in-alt-adv")||$("#in-name"); if(i) i.focus(); }
+}
+
+async function api(payload){
+  const res = await fetch(API_URL, { method:"POST", body: JSON.stringify(payload) });
+  return res.json();
+}
+
+async function load(quiet){
+  try{
+    const res = await fetch(API_URL, { cache:"no-store" });
+    const out = await res.json();
+    if (!out.ok) throw new Error("bad response");
+    state.data = out.signups || {};
+    state.ready = true;
+    if (!quiet) status("");
+    if (!state.editing) render();
+  }catch(err){
+    if (!quiet) status("Sign-ups aren't loading right now. Refresh the page to try again.");
+  }
+}
+
+render();
+
+document.addEventListener("click", async e => {
+  const t = e.target.closest("button"); if(!t || state.busy) return;
+  if (t.dataset.open){ state.editing=t.dataset.open; status(""); render(); }
+  else if (t.hasAttribute("data-cancel")){ state.editing=null; render(); }
+  else if (t.dataset.save){
+    const [id,slot]=t.dataset.save.split("|");
+    const name=($("#in-name").value.trim().split(/\s+/)[0]||"");
+    if(!name){ $("#in-name").focus(); status("Enter your first name to sign up."); return; }
+    state.busy=true; t.disabled=true; t.textContent="Saving…";
+    try{
+      const out = await api({ action:"signup", id, slot, name });
+      if (out.ok){
+        state.tokens[id+"|"+slot]=out.token; saveTokens();
+        state.data[id]=state.data[id]||{}; state.data[id][slot]={name};
+        status("Signed up. Thank you!");
+      } else if (out.error==="taken"){
+        status("Someone just took that spot. Pick another one.");
+      } else {
+        status("Couldn't save. Check your entry and try again.");
+      }
+    }catch(err){ status("Couldn't save. Check your connection and try again."); }
+    state.busy=false; state.editing=null; render(); load(true);
+  }
+  else if (t.dataset.saveAlt){
+    const [id]=t.dataset.saveAlt.split("|");
+    const adventure=$("#in-alt-adv").value.trim();
+    const name=($("#in-alt-name").value.trim().split(/\s+/)[0]||"");
+    if(!adventure){ $("#in-alt-adv").focus(); status("Enter the adventure you'd like to do."); return; }
+    if(!name){ $("#in-alt-name").focus(); status("Enter your first name so the den leader knows who to follow up with."); return; }
+    state.busy=true; t.disabled=true; t.textContent="Saving…";
+    try{
+      const out = await api({ action:"signup", id, slot:"alt", name, adventure });
+      if (out.ok){
+        state.tokens[id+"|alt"]=out.token; saveTokens();
+        state.data[id]=state.data[id]||{}; state.data[id].alt={name,adventure};
+        status("Thanks! Your suggestion is saved.");
+      } else if (out.error==="taken"){
+        status("Someone already suggested an alternative for that month.");
+      } else {
+        status("Couldn't save. Check your entry and try again.");
+      }
+    }catch(err){ status("Couldn't save. Check your connection and try again."); }
+    state.busy=false; state.editing=null; render(); load(true);
+  }
+  else if (t.dataset.remove){
+    const [id,slot]=t.dataset.remove.split("|");
+    if(!confirm("Remove this sign-up?")) return;
+    state.busy=true;
+    try{
+      const out = await api({ action:"remove", id, slot, token: state.tokens[id+"|"+slot] });
+      if (out.ok){
+        delete state.tokens[id+"|"+slot]; saveTokens();
+        if (state.data[id]) delete state.data[id][slot];
+        status("Sign-up removed.");
+      } else status("Couldn't remove it. Contact the den leader.");
+    }catch(err){ status("Couldn't remove it. Check your connection and try again."); }
+    state.busy=false; render(); load(true);
+  }
+});
+
+if (!/^https:\/\/script\.google\.com\//.test(API_URL)) {
+  status("Sign-ups aren't connected yet. Check back soon.");
+} else {
+  load(false);
+  setInterval(() => { if (!state.editing && !state.busy && !document.hidden) load(true); }, 60000);
+}
+</script>
+</body>
+</html>
