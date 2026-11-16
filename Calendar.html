@@ -317,6 +317,15 @@ a:hover { color: var(--rust-deep); }
       background: var(--amber); color: var(--ink); padding: 6px 12px; border: 1.5px dashed var(--ink);
       margin: 6px 0 10px;
     }
+    .venue-alert {
+      background: var(--amber); border-top: 1.5px dashed var(--ink); border-bottom: 1.5px dashed var(--ink);
+    }
+    .venue-alert .wrap-in { padding-top: 18px; padding-bottom: 18px; }
+    .venue-alert .va-tag {
+      display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
+      text-transform: uppercase; font-weight: 700; color: var(--ink); margin-bottom: 6px;
+    }
+    .venue-alert p { margin: 0; font-size: 17px; color: var(--ink); }
     .month .event.hidden { display: none; }
     .month .event.optional { border-left: 3px solid var(--pine); padding-left: 20px; }
     .optional-badge {
@@ -484,6 +493,13 @@ a:hover { color: var(--rust-deep); }
     <p>Every Pack 157 gathering for the months ahead — meetings, campouts, service days, and everything in between. Pack Meetings are always open to visiting families; just show up.</p>
   </div>
 </header>
+
+<section class="venue-alert">
+  <div class="wrap-in">
+    <span class="va-tag">📍 Location change — Wed Nov 18</span>
+    <p>The Pack Meeting on <strong>Wednesday, November 18 (6:00–7:15 PM)</strong> is at <strong>First Parish Church</strong> — <strong>not St. Julia</strong>. See you at First Parish.</p>
+  </div>
+</section>
 
 <section class="next" id="next-event">
   <div class="wrap-in">
@@ -655,7 +671,7 @@ a:hover { color: var(--rust-deep); }
       </div>
       <div class="event" data-kind="pack">
         <div class="date"><div class="d">18</div><div class="w">Wed</div></div>
-        <div class="t"><h3>Pack (K through 5th Grade) Meeting</h3><div class="where-mobile">📍 First Parish Church</div><p>All dens together for the monthly Pack Meeting. Visiting families are always welcome — just show up.</p><div class="time">6:00 – 7:15 PM</div></div>
+        <div class="t"><h3>Pack (K through 5th Grade) Meeting</h3><div class="where-mobile">📍 First Parish Church</div><div class="loc-flag">📍 Location changed — First Parish, not St. Julia</div><p>All dens together for the monthly Pack Meeting. Visiting families are always welcome — just show up.</p><div class="time">6:00 – 7:15 PM</div></div>
         <div class="where">First Parish<br/>Church</div>
         <div class="tag pack">Pack</div>
       </div>
