@@ -852,6 +852,28 @@ a:hover { color: var(--rust-deep); }
       .finalcta .ctas { align-items: center; }
       .btn { width: 100%; justify-content: center; }
     }
+
+    /* ── Desktop/tablet hero: compact intro bar (mobile layout unchanged) ── */
+    @media (min-width: 641px) {
+      .hero { min-height: 0; }
+      .hero .content {
+        align-items: center;
+        gap: 44px;
+        padding: 30px 48px 32px;
+      }
+      .hero .tag { margin-bottom: 16px; padding: 8px 12px; font-size: 10px; }
+      .hero h1 { font-size: clamp(50px, 5.4vw, 78px); line-height: 0.95; }
+      .hero h1 .line-b { margin-top: 4px; }
+      .hero .right { gap: 16px; }
+      .hero .right p.lede { font-size: 18px; line-height: 1.4; }
+      .hero .chrome-bottom .cell { padding: 12px 24px; }
+      .hero .chrome-bottom .k { margin-bottom: 4px; }
+      .hero .chrome-bottom .v { font-size: 18px; }
+      .hero .chrome-bottom .s { font-size: 12px; }
+    }
+    @media (min-width: 1101px) {
+      .hero .content { grid-template-columns: 1.35fr 1fr; }
+    }
   </style>
 <template id="__bundler_thumbnail" data-bg-color="#0f1f23">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
@@ -975,43 +997,6 @@ a:hover { color: var(--rust-deep); }
   </div>
 </header>
 
-<!-- Voices -->
-<section class="voices" id="about">
-  <div class="wrap-in">
-    <div class="head">
-      <span class="kicker">From Our Community</span>
-      <h2 style="margin-top: 12px;">What Families <span class="i">actually say.</span></h2>
-      <div class="sub">No marketing copy. Real families.</div>
-    </div>
-    <div class="cards">
-      <div class="v">
-        <div class="mark">"</div>
-        <p class="quote">Weston Scouts is genuinely one of the core pillars of our community - friends, neighbors, and schoolmates gather together for some wholesome fun!</p>
-        <div class="attr">
-          <div class="avatar">RS</div>
-          <div><div class="name">Rob S.</div><div class="role">Wolf Den Parent</div></div>
-        </div>
-      </div>
-      <div class="v">
-        <div class="mark">"</div>
-        <p class="quote">It's one of the few things we do where the parents are just as involved as the kids. We're all figuring it out together, and honestly, that's half the fun.</p>
-        <div class="attr">
-          <div class="avatar">PM</div>
-          <div><div class="name">Phil M.</div><div class="role">Bear Den Parent</div></div>
-        </div>
-      </div>
-      <div class="v">
-        <div class="mark">"</div>
-        <p class="quote">Den meetings are my son's favorite day of the month.</p>
-        <div class="attr">
-          <div class="avatar">MC</div>
-          <div><div class="name">Mary C</div><div class="role">Wolf Den Parent</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Gallery / What we do -->
 <section class="gallery">
   <div class="head">
@@ -1088,6 +1073,43 @@ a:hover { color: var(--rust-deep); }
           <div><div class="k">Group</div><div class="v">By grade</div></div>
           <div><div class="k">Where</div><div class="v">Scout House</div></div>
           <div><div class="k">Who</div><div class="v">Your den</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Voices -->
+<section class="voices" id="about">
+  <div class="wrap-in">
+    <div class="head">
+      <span class="kicker">From Our Community</span>
+      <h2 style="margin-top: 12px;">What Families <span class="i">actually say.</span></h2>
+      <div class="sub">No marketing copy. Real families.</div>
+    </div>
+    <div class="cards">
+      <div class="v">
+        <div class="mark">"</div>
+        <p class="quote">Weston Scouts is genuinely one of the core pillars of our community - friends, neighbors, and schoolmates gather together for some wholesome fun!</p>
+        <div class="attr">
+          <div class="avatar">RS</div>
+          <div><div class="name">Rob S.</div><div class="role">Wolf Den Parent</div></div>
+        </div>
+      </div>
+      <div class="v">
+        <div class="mark">"</div>
+        <p class="quote">It's one of the few things we do where the parents are just as involved as the kids. We're all figuring it out together, and honestly, that's half the fun.</p>
+        <div class="attr">
+          <div class="avatar">PM</div>
+          <div><div class="name">Phil M.</div><div class="role">Bear Den Parent</div></div>
+        </div>
+      </div>
+      <div class="v">
+        <div class="mark">"</div>
+        <p class="quote">Den meetings are my son's favorite day of the month.</p>
+        <div class="attr">
+          <div class="avatar">MC</div>
+          <div><div class="name">Mary C</div><div class="role">Wolf Den Parent</div></div>
         </div>
       </div>
     </div>
