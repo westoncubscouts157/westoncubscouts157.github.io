@@ -349,13 +349,22 @@ a:hover { color: var(--rust-deep); }
     .past-group .pg-body { padding-bottom: 8px; }
     .past-group .event:last-child { border-bottom: 0; }
 
-    /* Fully-past month: the whole month collapses */
-    .month.archived { padding-top: 40px; padding-bottom: 28px; }
-    .month.archived summary.label { margin-bottom: 0; border-bottom-color: rgba(0,31,77,0.25); }
-    .month.archived details[open] > summary.label { margin-bottom: 28px; }
-    .month.archived .label .m { font-size: clamp(32px, 3.6vw, 56px); color: var(--stone); }
-    .month.archived .label .y { font-size: 20px; color: var(--stone); }
-    .month.archived .label .count { display: flex; align-items: center; gap: 10px; }
+    /* Fully-past month: the whole month collapses, shrinks, and pairs up side by side */
+    .month.archived { float: left; width: 50%; padding: 36px 32px 24px; }
+    .month:not(.archived) { clear: both; }
+    .legend, .strip, footer { clear: both; }
+    .month.archived summary.label { margin-bottom: 0; border-bottom-color: rgba(0,31,77,0.25); padding-bottom: 12px; }
+    .month.archived details[open] > summary.label { margin-bottom: 20px; }
+    .month.archived .label .m { font-size: clamp(26px, 2.8vw, 40px); color: var(--stone); }
+    .month.archived .label .y { font-size: 16px; color: var(--stone); }
+    .month.archived .label .count { display: flex; align-items: center; gap: 10px; font-size: 10px; }
+    /* Smaller event text inside a finished month, for when its drop-down is opened */
+    .month.archived .event .date .d { font-size: 30px; }
+    .month.archived .event .t h3 { font-size: 19px; }
+    .month.archived .event .t p { font-size: 12.5px; }
+    @media (max-width: 760px) {
+      .month.archived { float: none; width: auto; }
+    }
     .month.archived summary.label:hover .m,
     .month.archived summary.label:hover .y,
     .month.archived summary.label:hover .count { color: var(--ink); }
